@@ -1,0 +1,447 @@
+Trial_ID,Trial Number/Name,Paper Name,Journal,Paper Link,Publication Year,# of Arm,Control Group,Study Phase,Sample Size,Priamry Outcome,Primary Outcome Type,Trial Success(Primary Outcome Significant),Statistical Model,Randomization Scheme,Randomization Scheme(High Level),Research Area,Citation,Number of Rows,Is Longitudinal
+1,NCT02491333,Effects of acupuncture and metformin on insulin sensitivity in women with polycystic ovary syndrome and insulin resistance: a three-armed randomized controlled trial,Human Reproduction,https://doi.org/10.1093/humrep/deab272,2022,3,Sham acupuncture + placebo,3,342,Change in HOMA-IR from baseline to 4 months after baseline visit,Continuous,No(acupuncture was not more effective than metformin or sham acupuncture),"Mann–Whitney U test
+ 
+Kolmogorov-Smirnov test
+
+Fisher's exact test",stratified by site,Stratified,"Nutrition, Metabolism & Lifestyle",71,342,
+2,NCT04523831,Ivermectin in combination with doxycycline for treating COVID-19 symptoms: a randomized trial,Journal of International Medical Research,"
+https://doi.org/10.1177/03000605211013550",2021,2,Placebo,3,400,Time (days) from treatment initiation (day 1) to clinical recovery,Time-to-event,Yes,"Primary: Kaplan–Meier survival curves + log-rank test; Cox proportional hazards regression for hazard ratios
+
+Secondary: Logistic regression for categorical recovery time and disease progression",simple randomization,Simple,Infectious Diseases & Immunology,123,256,
+3,NCT02753751,"Electronic health record alerts for acute kidney injury:
+multicenter, randomized clinical trial",bmj,https://doi.org/10.1136/bmj.m4786,2021,2,Usual Care,Not Applicable,6030,"Composite of AKI progression (to a higher KDIGO stage), receipt of dialysis, or death within 14 days of randomization ",Binary,No,"Primary analysis: Mantel–Haenszel test (stratified by hospital) for relative risks; Cox proportional hazards regression (stratified by hospital) for Time-to-event
+
+Sensitivity: modified Poisson generalized estimating equations with robust variance
+
+Continuous/process measures: Van Elteren test (stratified); Kaplan–Meier curves and log-rank tests for site-specific Time-to-event analyses",simple randomization,Simple,Nephrology,196,92,
+4,TCTR20171206003,"Effect of vitamin D supplementation in patients with chronic hepatitis C after direct-acting antiviral treatment: a randomized, double-blind, placebo-controlled trial",PeerJ,https://peerj.com/articles/10709/,2021,2,Placebo,2,75,"Change from baseline to week 6 in serum fibrogenesis markers:
+ TGF-β1, TIMP-1, MMP-9, P3NP ",Continuous,No,"Primary: independent two-sample t-tests comparing mean change from baseline between arms
+
+Sensitivity: median quantile regression of change scores
+
+Baseline balance: t-tests or chi-square/Fisher’s exact tests ",blocked randomization,Block,Gastroenterology & Hepatology,11,417,
+5,NCT02771977,A randomized clinical trial assessing the effect of automated medication-targeted alerts on acute kidney injury outcomes,Nature communications,https://www.nature.com/articles/s41467-023-38532-3,2023,2,Usual Care,Not Applicable,5060,"Composite of AKI progression (to a higher KDIGO stage), receipt of dialysis, or death within 14 days of randomization or hospital discharge",Binary,No,"Primary: Cochran–Mantel–Haenszel χ² test stratified by hospital for relative risks
+
+Continuous/process: Van Elteren test (stratified by hospital)
+
+Subgroup interactions: binomial regression model adjusted for hospital (interaction p-values)
+
+Mediation: product-of-coefficients method with bootstrapped 95% CIs, adjusting for key baseline covariates",simple randomization,Simple,Nephrology,33,410,
+6,UMIN000004490,The Effect of Sitagliptin on Carotid Artery Atherosclerosis in Type 2 Diabetes: The PROLOGUE Randomized Controlled Trial,PLoS medicine,https://doi.org/10.1371/journal.pmed.1002051,2016,2,Conventional,4,463,Percentage change in mean common carotid artery intima-media thickness (CCA IMT) at 24 months after randomization,Continuous,No,"Primary & secondary: baseline-adjusted ANCOVA
+
+Sensitivity: mixed-effects model for repeated measures
+
+Baseline comparisons: unpaired t-tests and Fisher’s exact tests",biased coin,Biased Coin,Cardiovascular Medicine,74,599,
+7,NCT02927197,"Comparing Two Methods of Delivering ThinkRx Cognitive Training
+to Children Ages 8–14: a Randomized Controlled Trial of Equivalency",Journal of Cognitive Enhancement,https://doi.org/10.1007/s41465-018-0094-z,2019,2,ThinkRx,Not Applicable,38,"Change scores (post – pre) on eight Woodcock–Johnson III cognitive subtests: associative memory, visual processing, auditory processing, logic & reasoning, processing speed, working memory/attention, long-term memory, and general intellectual ability.",Continuous,"Equivalence (no significant difference) demonstrated on 7 of 8 measures; however, long-term memory gains were significantly greater in the ThinkRx arm","Primary analysis: MANOVA on difference scores with Bonferroni correction
+
+Sensitivity: ANCOVA for each post-test controlling baseline; OLS regression with clustered standard errors (for sibling dependence)","Blocked randomization,
+ stratified by sibling status",Stratified Block,Neurology & Neurorehabilitation,9,366,
+8,CTRI/2020/08/027225,Evaluation of Ivermectin as a Potential Treatment for Mild to Moderate COVID-19:  A Double-BlindRandomized  Placebo  Controlled  Trialin Eastern India,J Pharm Pharm Sci,10.18433/jpps32105,2021,2,Placebo,Not Applicable,115,Proportion of patients with a negative SARS-CoV-2 RT-PCR on Day 6 post-enrolment,Binary,No,"Baseline comparisons: independent-samples Student’s t-test (continuous) and chi-square test (categorical)
+
+Outcome comparisons: rate ratios with chi-square tests",blocked randomization,Block,Infectious Diseases & Immunology,111,50,
+9,ISRCTN13204258,"Umbilical vein oxytocin for the treatment of retained
+placenta (Release Study): a double-blind, randomised
+controlled trial",The Lancet,10.1016/S0140-6736(09)61752-9,2010,2,Placebo,Not Applicable,577,Need for manual removal of the placenta after randomization,Binary,No,"Primary & binary secondary outcomes: relative risks with χ² tests
+
+Continuous skewed outcomes (e.g., time): Mann-Whitney tests
+
+Subgroup consistency: Mantel–Haenszel homogeneity tests","blocked randomization,
+stratified by center",Stratified Block,"Women's, Maternal & Child Health",73,44,
+10,NCT02926144,"Influence of videolaryngoscopy using
+McGrath Mac on the need for a helper
+to perform intubation during general
+anaesthesia: a multicentre randomised
+video-no-video trial",BMJ open,10.1136/bmjopen-2021-049275,2022,2,No Video,Not Applicable,256,Proportion of orotracheal intubations requiring assistance at the operator’s request,Binary,No,"Primary outcome (binary): comparison of proportions by χ² test (with Bonferroni correction for multiple comparisons when assessing IDS components).
+
+Secondary categorical outcomes: χ² or Fisher’s exact tests (as appropriate).
+
+Continuous outcomes (e.g., POGO, time): Wilcoxon rank-sum test (after verifying normality with Shapiro–Wilk).
+
+Intubation Difficulty Scale (ordinal): Wilcoxon or χ² for class comparisons.
+
+Hemodynamic changes: pre- vs post-intubation medians compared by Wilcoxon; between-group differences tested similarly.","centralized randomization,
+stratified by center",Stratified Block,Anesthesiology & Pain Medicine,2,217,
+11,NCT02252588,"Chlorhexidine oral rinses for symptomatic COPD: a randomised, blind, placebo-controlled preliminary study",BMJ open,https://bmjopen.bmj.com/content/11/12/e050271,2021,2,placebo,2,44,Change from baseline to 8 weeks in oral and sputum microbiota biomass (log₁₀ 16S rRNA copy number),Continuous,No,"Primary analysis: Two-sample t-test on log10-transformed biomass data, with multiple imputation for missing sputum weights
+
+Secondary analyses: Linear regression models for biodiversity indices, BCSS, SGRQ and inflammatory markers, with each model adjusted for the baseline value of the measure",Simple randomization,Simple,"Emergency, Pulmonary & Critical Care",10,6030,
+12,NCT03718832,"Effect of an Intensive Food-as-Medicine Program
+on Health and Health Care Use",JAMA internal medicine,doi:10.1001/jamainternmed.2023.6670,2024,2,Waitlist,Not Applicable,349,Hemoglobin A1c (HbA1c) level at 6 months from enrollment,Continuous,No,"Primary and secondary outcomes:
+
+Mixed-effects models (longitudinal models) for laboratory test results and health care use outcomes
+Linear regression models for program engagement and survey outcomes at 6 and 12 months
+Models included heteroskedasticity-robust, participant-clustered standard errors
+Multiple imputation for missing baseline measures (except HbA1c, which was complete)
+Inverse covariance weighting for creating index scores from multiple survey measures",Stratified by site and hba1c category,Stratified,"Nutrition, Metabolism & Lifestyle",45,120,
+13,NCT02954068,"Does route matter? Impact of route of oxytocin administration on postpartum bleeding: A double-blind, randomized controlled trial",PloS one,https://doi.org/10.1371/journal.pone.0222981,2019,2,IM injection,4,480,"Proportion with Blood Loss ≥ 500
+
+Mean Blood Loss",Continuous; Binary,No,"Categorical variables: Pearson χ² or Fisher’s exact tests
+
+Continuous variables: Independent t-tests or Mann-Whitney U tests (depending on normality)",blocked randomization,Block,"Women's, Maternal & Child Health",23,44,
+14,ChiCTR2000031834,"A telerehabilitation programme in post-discharge
+COVID-19 patients (TERECO): a randomised
+controlled trial",Thorax,https://thorax.bmj.com/content/77/7/697,2022,2,No Active Rehabilitation,Not Applicable,119,6-minute walking distance (6MWD) in meters at 6 weeks (post-treatment) and at follow-up (~28 weeks),Continuous,Yes,"For primary outcome and most secondary continuous outcomes: Constrained longitudinal data analysis (linear mixed effects model with equality constraint on baseline means), adjusted for center (fixed effect) with random intercept for participants
+
+For mMRC-dyspnoea: Generalized linear model of the Poisson family with a log link, adjusted for center and using natural logarithm of the number of observed occasions as offset, with cluster robust standard errors","blocked randomization, stratified by hospital",Stratified Block,Rehabilitation & Physical Medicine,299,80,
+15,KCT0002794,The effect of Snoezelen intervention on problem behaviors in children with cerebral palsy: A randomized controlled trial,Complementary Therapies in Medicine,https://doi.org/10.1016/j.ctim.2025.103139,2025,2,Conventional Only,Not Applicable,28,Change in Child Behavior Checklist (CBCL 1.5–5) scores (pre- vs. post-intervention),Continuous,Yes,"Within-group: Wilcoxon signed-rank test
+
+Between-group: Mann-Whitney U test
+
+Correlation: Spearman’s rank correlation (ρ)
+
+Association: Linear regression (R² for GMFCS vs. change in emotional reactivity)",simple randomization,Simple,Rehabilitation & Physical Medicine,1,20,
+16,NCT01573130,"Internet-delivered therapist-guided
+physical activity for mild to moderate
+depression: a randomized controlled trial",PeerJ,https://doi.org/10.7717/peerj.178,2013,2,Waitlist,Not Applicable,48,Reduction in depressive symptoms as measured by the Beck Depression Inventory-II (BDI-II),Continuous,Yes,Two-way mixed ANOVA (group × time),simple randomization,Simple,Mental & Behavioral Health,83,210,
+17,ChiCTR2200058389,"The Effectiveness and Safety of Intensive Lipid-Lowering with
+Different Rosuvastatin-Based Regimens in Patients at High
+Cardiovascular Disease Risk: A Nonblind, Randomized, Controlled
+Trial",Reviews in Cardiovascular Medicine,"
+https://doi.org/10.31083/j.rcm2408222",2023,4,Statin,Not Applicable,294,Change in lipid levels (total cholesterol and LDL-C) from baseline at 24 weeks,Continuous,"Yes, partially. At 24 weeks LDL-C and TC were significantly lower in statin + PCSK9-i and combine3 vs statin or statin + ezetimibe (overall p < 0.05); combine3 and PCSK9 arms met superiority, while adding ezetimibe alone did not.","Within-group changes: Wilcoxon signed-rank test with rank-biserial correlation
+
+Between-group comparisons: Kruskal–Wallis one-way ANOVA with Dunn’s post-hoc test
+
+Target-achievement analysis: Multivariate logistic regression (adjusting for covariates)",simple randomization,Simple,Cardiovascular Medicine,3,28,
+18,NCT02474992,The Kanyakla study: Randomized controlled trial of a microclinic social network intervention for promoting engagement and retention in HIV care in rural western Kenya,PloS one,https://doi.org/10.1371/journal.pone.0255945,2021,2,Standard Care,Not Applicable,295,"Time to disengagement: first ≥90-day absence from any HIV care visit in 12 months
+
+Time in care: proportion of time adherent to appointments over 12 months",Continuous; Time-to-event,No,"Disengagement: Cox proportional hazards
+
+Time in Care: linear regression with bootstrapping
+
+Continuous outcomes (social support, stigma): linear regression with 10,000-replication bootstrap, adjusting for baseline.
+
+Disclosure counts: Poisson regression, adjusting for baseline, with robust SE for clustering",stratified by site,Stratified,Infectious Diseases & Immunology,16,138,
+19,NCT01707810,"Prospective Randomized Trial Comparing
+Hepatic Venous Outflow and Renal Function
+after Conventional versus Piggyback Liver
+Transplantation",PLoS One,https://doi.org/10.1371/journal.pone.0129923,2015,2,Conventional,Not Applicable,32,"Hepatic venous outflow drainage, quantified by the free hepatic venous pressure (FHVP) to central venous pressure (CVP) gradient",Continuous,No,"Primary outcome: Student’s t-test / ANOVA (or Mann–Whitney if non-normal), plus χ² or Fisher’s exact for categorical comparisons
+
+Secondary outcomes: Generalized Estimating Equations (GEE) for longitudinal serum creatinine and for binary severe ARF; Kaplan–Meier curves with log-rank test for survival analysis ",blocked randomization,Stratified Block,Surgery,28,511,
+20,NCT02089477,"Effect of ecological momentary assessment,
+goal-setting and personalized phone-calls on
+adherence to interval walking training using
+the InterWalk application among patients with
+type 2 diabetes—A pilot randomized
+controlled trial",PloS one,https://doi.org/10.1371/journal.pone.0208181,2019,2,IWT only,Not Applicable,37,Adherence to interval walking training (IWT) measured as total accumulated minutes of IWT during the 12-week intervention period,Continuous,No(ITT analysis),"Primary outcome: Mixed effects model with fixed effects for group, age, and sex
+Secondary outcomes: Mixed linear models with same fixed factors as for primary outcome, additionally adjusted for respective baseline values",blocked randomization,Block,"Nutrition, Metabolism & Lifestyle",37,24,
+21,NCT03519425,Computer-aided X-ray screening for tuberculosis and HIV testing among adults with cough in Malawi (the PROSPECT study): A randomised trial and cost-effectiveness analysis,PLoS medicine,https://doi.org/10.1371/journal.pmed.1003752,2021,3,SOC,Not Applicable,1462,Time in days (up to day 56) to TB treatment initiation,Time-to-event,"Yes
+
+Compared to SOC, the HIV-TB screening arm significantly shortened time to TB treatment (HR 2.86; 95% CI 1.04–7.87; p = 0.04). The HIV-only arm did not differ significantly (HR 1.51; 95% CI 0.49–4.62) ","Primary outcome: log-rank test and unadjusted Cox proportional-hazards models
+
+Secondary binary outcomes: binomial regression with log link (risk ratios)
+",simple randomization,Simple,Infectious Diseases & Immunology,67,25,
+22,,"Development and First Phase Evaluation of a
+Maternity Leave Educational Tool for
+Pregnant, Working Women in California",Plos one,https://doi.org/10.1371/journal.pone.01294721,2015,2,Control,Not Applicable,146,Proportion of women taking more than one week of prenatal leave (among those delivering ≥37 weeks),Binary,No,Descriptive comparisons used t-tests for continuous outcomes and chi-square or Fisher’s exact tests for categorical outcomes,simple randomization,Simple,"Women's, Maternal & Child Health",8,86,
+23,UMIN000008339,"Can recombinant human
+thrombomodulin increase survival
+among patients with severe septicinduced disseminated intravascular
+coagulation: a single-centre, open-label,
+randomised controlled trial",BMJ open,https://bmjopen.bmj.com/content/6/12/e012850,2016,2,No rhTM,Not Applicable,92,28-day and 90-day survival rates,Time-to-event,No,"Kaplan–Meier curves with log-rank tests
+
+Mann-Whitney test
+
+Fisher’s exact test",simple randomization,Simple,"Emergency, Pulmonary & Critical Care",45,57,
+24,NCT02290054,"Auriculotherapy in the prevention of postoperative urinary retention in patients with thoracotomy and thoracic epidural analgesia
+A randomized, double-blinded trial",Medicine,http://dx.doi.org/10.1097/MD.0000000000015958,2019,2,Sham Comparator,Not Applicable,50,Requirement for bladder catheterization during the day and the first night following surgery,Binary,Yes,"Primary outcome: Fisher exact test for proportion comparison; Kaplan–Meier survival analysis with log-rank test for time to catheterization.
+
+Secondary analyses: Univariate tests including Chi-square/Fisher exact for categorical variables, Student’s t-test or Mann–Whitney for continuous variables, Hodges–Lehmann estimator and Cohen’s d for effect sizes, and Mann–Whitney for anxiety/comfort scores.",blocked randomization,Block,Anesthesiology & Pain Medicine,10,349,
+25,NCT04451096,"Multi-strain probiotics (Hexbio) containing
+MCP BCMC strains improved constipation and
+gut motility in Parkinson’s disease: A
+randomised controlled trial",Plos one,https://doi.org/10.1371/journal.pone.0244680,2020,2,Placebo,3,55,"Change in constipation symptoms assessed by the 9-item Garrigues Questionnaire (GQ)
+
+Bowel opening frequency (BOF) per week (mean weekly bowel movements)
+
+Whole gut transit time (GTT) in hours",Continuous; Count; Ordinal,Yes,"Between-group comparisons: univariate tests (t-test or Mann–Whitney U for continuous/count data; χ² or Fisher’s exact for categorical outcomes)
+
+Regression analyses: generalized linear models—ordinal logistic regression for GQ items, binary logistic for BOF categories, linear regression for BM/week and GTT
+
+Within-group analyses: paired t-tests or Wilcoxon signed-rank tests",blocked randomization,Block,Neurology & Neurorehabilitation,174,70,
+26,NCT02677675,"Mobile phone reminders and peer counseling
+improve adherence and treatment outcomes
+of patients on ART in Malaysia: A randomized
+clinical trial",PloS one,https://doi.org/10.1371/journal.pone.0177698,2017,2,Standard Care,Not Applicable,242,"Adherence (improved scheduled clinic attendance and medication adherence self-report), attendance",Continuous; Binary; Categorical,Yes,"Parametric tests: Student’s t-test, two-way repeated-measures ANOVA for adherence, CD4, viral load, and weight
+
+Nonparametric tests: Chi-square/Fisher’s exact tests for categorical comparisons; Friedman’s ANOVA for within-group non-normal data
+
+Multivariate models: mixed repeated-measures ANCOVA adjusting for baseline covariates (age, ethnicity, education, income)",simple randomization,Simple,Infectious Diseases & Immunology,121,144,
+27,NCT01891838,"Impact of the modality of mechanical ventilation
+on bleeding during pituitary surgery
+A single blinded randomized trial",Medicine,http://dx.doi.org/10.1097/MD.0000000000017254,2019,2,VCV,Not Applicable,101,"Intraoperative bleeding during transsphenoidal pituitary surgery, scored using a 7-level bleeding scale.",Ordinal,No,"Primary outcome: ordinal logistic regression (proportional cumulative odds)
+
+Secondary outcomes: Student’s t-test or Mann–Whitney for continuous variables; Chi-square or Fisher’s exact for categorical variables",blocked randomization,Block,Anesthesiology & Pain Medicine,8,124,
+28,NCT02981251,Effectiveness of community-based health education and home support program to reduce blood pressure among patients with uncontrolled hypertension in Nepal: A cluster-randomized trial,PloS one,https://doi.org/10.1371/journal.pone.0258406,2021,2,Usual Care,Not Applicable,120,Proportion of participants with controlled systolic blood pressure (SBP < 140 mmHg) at six months,Binary,Yes,"Comparisons: independent t-tests for continuous variables; χ² or Fisher’s exact for categorical
+
+Primary/secondary binary outcomes: binary logistic regression (adjusted for covariates & clustering)
+
+Knowledge score: linear regression of follow-up score on baseline score and intervention",cluster randomization,Stratified Rerandomization,Cardiovascular Medicine,38,49,
+29,NCT01802385,"Adjunctive sertraline in HIV-associated cryptococcal meningitis:
+a randomised, placebo-controlled, double-blind phase 3 trial",The Lancet Infectious Diseases,10.1016/S1473-3099(19)30127-6,2018,2,Placebo,3,460,18-week all-cause mortality (survival),Time-to-event,No,"Primary: Kaplan-Meier survival curves and Cox proportional hazards regression (intention-to-treat) 29
+
+Secondary:
+
+Linear regression and mixed-effects regression (random intercept) for early fungicidal activity
+
+Cumulative incidence functions (competing risks), logistic regression, Fisher’s exact tests, general linear models, and Wilcoxon rank-sum tests for other endpoints","blocked randomization, stratified by site and ART status",Stratified Block,Infectious Diseases & Immunology,132,40,
+30,NCT03899090,"A randomized controlled safety and feasibility
+trial of floatation-REST in anxious and
+depressed individuals",MedRxiv,https://doi.org/10.1371/journal.pone.0286899,2023,3,"	
+Chair-REST",Not Applicable,75,"Feasibility, assessed by adherence to six sessions of the assigned intervention (target ≥ 80%).",Continuous,"Adherence met the ≥80% feasibility threshold for Pool-REST (85%) and Pool-REST Preferred (89%).
+
+Chair-REST did not meet the threshold (74%).","Feasibility (credibility/expectancy): One-way ANOVA
+
+Tolerability (dropout): Kaplan–Meier survival analysis with log-rank tests
+
+Session duration & event ratings: Linear mixed‐effects models (REML, AR1 covariance), with fixed effects of condition, visit (and event for safety), and their interactions, random intercepts for subject ID",simple randomization,Simple,Mental & Behavioral Health,3,574,
+31,,"Influenza Hemagglutination-inhibition Antibody Titer as a
+Mediator of Vaccine-induced Protection for Influenza B",Clinical Infectious Diseases,https://doi.org/10.1093/cid/ciy759,2019,2,Placebo,Not Applicable,796,Time to laboratory-confirmed influenza B/Victoria infection,Time-to-event,Yes,"Cox models for total, direct, and indirect (mediated) effects.
+
+Logistic regression to create inverse-odds-ratio weights for mediation.
+
+Bootstrap (10 000 resamples) for CIs. ",simple randomization,Simple,Infectious Diseases & Immunology,83,480,
+32,ACTRN12617001136392,"Nasal ventilation and rapid maxillary expansion
+(RME): a randomized trial",European Journal of Orthodontics,doi:10.1093/ejo/cjab001,2021,3,Hyrax,Not Applicable,57,"pressure, velocity",Continuous,"Partially, 
+No statistically significant differences among groups in nasal pressure or velocity (P = 0.17, P = 0.08).
+
+However, Hybrid-Hyrax showed a trend of greater improvement and was statistically superior to Hyrax in adjusted regressions for maximum velocity (P = 0.03) and nasal obstruction resolution (P = 0.04).","Linear regression (with transformed outcomes) for continuous variables
+
+Fisher’s exact test for categorical variables (e.g., obstruction resolution)
+
+Adjusted multivariable regression controlling for confounders
+
+Multivariable regularized logistic regression (penalized) for predicting nasal obstruction resolution",simple randomization,Simple,Dentistry & Oral Health,33,119,
+33,,"Reducing therapeutic misconception: A
+randomized intervention trial in hypothetical
+clinical trials",PLoS One,https://doi.org/10.1371/journal.pone.0184224,2017,2,Control,Not Applicable,154,"Therapeutic misconception, measured by the 10-item Therapeutic Misconception Scale (score range 10–50).",Continuous,Yes,"Unadjusted two-tailed t-test for TM score comparison
+
+Chi-square test for willingness to participate
+
+Factorial two-way ANOVAs (group × baseline characteristics) to assess main and interaction effects, including education ",stratified by disease group,Stratified,"General Medicine, Health Services & Education",51,28,
+34,NCT01214473,A randomized synbiotic trial to prevent sepsis among infants in rural India,Nature,https://www.nature.com/articles/nature23480,2017,2,Placebo,Not Applicable,4556,Composite of death or neonatal sepsis (culture-positive/negative sepsis or lower respiratory tract infection) within 60 days.,Binary,Yes,"Primary and secondary binary outcomes: Chi-square or Fisher’s exact tests to compare proportions; risk ratios with 95% CIs
+
+Weight gain comparison: Two-sample t-test (Satterthwaite) ",blocked randomization,Block,"Women's, Maternal & Child Health",591,48,
+35,NCT01243554,"Exercise Training and Weight Gain in Obese
+Pregnant Women: A Randomized Controlled
+Trial (ETIP Trial)",PLoS medicine,10.1371/journal.pmed.1002079,2016,2,Control,Not Applicable,91,Gestational weight gain (GWG) from baseline (week 12–18) to delivery,Continuous,No,"Continuous outcomes: linear mixed models (time × treatment fixed; participant random)
+
+Binary outcomes: mixed-effects logistic regression
+– Analyses by intention-to-treat; per-protocol sensitivity analyses also performed ",blocked randomization,Block,"Women's, Maternal & Child Health",195,294,
+36,NCT03382353,"Targeting brain health in subjective cognitive decline: insights
+from a multidomain randomized controlled trial",Aging Clinical and Experimental Research,https://doi.org/10.1007/s40520-025-03062-z,2025,3,ACI,Not Applicable,114,"One-year change in cognitive function:
+
+Rey Auditory Verbal Learning Test (RAVLT)
+
+z-standardized composite scores for memory, attention-executive, and visuospatial domains",Continuous,"Memory composite, RAVLT total, visuospatial: No
+
+Attention-executive: Yes (MI vs ACI)","Primary & secondary: Complete-case ANCOVA (post-intervention measure ~ group + baseline + age + sex + education), with Bonferroni-adjusted pairwise t-tests 36.
+
+Functional connectivity: MANCOVAN followed by voxel-wise univariate tests (FDR-corrected).
+
+Exploratory brain–behavior: Linear mixed-effects models.","Blocked randomization,
+ stratified by site",Stratified Block,Neurology & Neurorehabilitation,4,295,
+37,NCT00820612,"A Randomized Trial of Rectal Indomethacin
+to Prevent Post-ERCP Pancreatitis",New England Journal of Medicine,10.1056/NEJMoa1111103,2012,2,Placebo,4,602,Incidence of post-ERCP pancreatitis,Binary,Yes,"Primary & moderate-to-severe outcomes: Two-tailed Fisher’s exact test (α=0.041, O’Brien–Fleming spending) 37
+
+Hospital stay: Kruskal–Wallis rank test 37
+
+Subgroup interactions: Multiple logistic regression with interaction terms ",stratified by center,Stratified,Gastroenterology & Hepatology,961,32,
+38,ATCG 175,A trial comparing nucleoside monotherapy with combination therapy in HIV-infected adults with CD4 cell counts from 200 to 500 per cubic millimeter. AIDS Clinical Trials Group Study 175 Study Team,New England Journal of Medicine,10.1056/NEJM199610103351501,1996,4,ZDV,Not Applicable,2139,"Time to a composite of:
+
+≥ 50 % decline in CD4 count
+
+Development of AIDS (CDC-defined)
+
+Death",Time-to-event,Yes,"Kaplan–Meier estimates + log-rank tests
+
+Cox proportional-hazards models stratified on prior therapy (with subgroup–treatment interaction)
+
+ANOVA and two-sample t-tests for CD4 count changes","stratified by prior antiretroviral exposure, block",Stratified Block,Infectious Diseases & Immunology,1512,400,
+39,HELP,Linking alcohol- and drug-dependent adults to primary medical care: a randomized controlled trial of a multi-disciplinary health intervention in a detoxification unit,Addiction,doi/10.1046/j.1360-0443.2003.00328.x,2003,2,Usual Care,Not Applicable,470,Time to first self-reported linkage (≥1 visit) to a primary care MD/NP/PA within 12 months,Time-to-event,Yes,"Primary: log-rank test; Cox proportional-hazards model for HR
+
+Secondary: generalized linear mixed models (PROC MIXED with unstructured covariance) for continuous outcomes; Wilcoxon rank-sum for utilization rates","blocked randomization, stratified by primary substance (alcohol vs drugs)",Stratified Block,Mental & Behavioral Health,124,37,
+40,laryngoscope,"A Randomized Comparison Between the Pentax AWS
+Video Laryngoscope and the Macintosh Laryngoscope
+in Morbidly Obese Patients",Anesthesia & Analgesia,10.1213/ANE.0b013e31822cf47d,2011,2,Macintosh,Not Applicable,99,"Time to successful tracheal intubation—measured from blade insertion to capnographic confirmation, censored at 100 seconds if exceeded",Time-to-event,No,"Primary outcome: Cox proportional‐hazards regression (adjusted for ASA and Mallampati), Kaplan–Meier curves with 95% confidence bands
+
+Secondary outcomes:
+
+Wilcoxon rank‐sum test for number of attempts
+
+Fisher’s exact test or logistic regression for binary outcomes (first‐attempt and overall success, bleeding, glottic view)
+
+Analysis of covariance for ease‐of‐intubation score
+
+Proportional‐odds logistic regression for sore‐throat severity",blocked randomization,Block,Anesthesiology & Pain Medicine,58,1462,
+41,NCT01444703,"A Randomized, Double-Blind Comparison
+of Licorice Versus Sugar-Water Gargle for
+Prevention of Postoperative Sore Throat and
+Postextubation Coughing",Anesthesia & Analgesia,10.1213/ANE.0b013e318299a650,2013,2,Sugar,Not Applicable,235,"Incidence of postoperative sore throat at rest, assessed across the first 4 postextubation hours (at 0.5, 1.5, and 4 h)",Binary,Yes,"Primary outcome: Modified Mantel–Haenszel test adjusting for within-patient correlation
+
+Pain‐score trajectories: Linear mixed-effects model with autoregressive covariance
+
+Coughing (ordinal): GEE with cumulative-logit link
+
+Individual binary comparisons: χ² tests (with Bonferroni correction) ",simple randomization,Simple,Anesthesiology & Pain Medicine,71,146,
+42,supraclavicular,"Combined Versus Sequential Injection of Mepivacaine
+and Ropivacaine for Supraclavicular Nerve Blocks",Regional Anesthesia & Pain Medicine,10.1097/AAP.0b013e31820d4235,2011,2,Combined,Not Applicable,103,"Time (minutes) from completion of injection to onset of sensory block in all four nerve distributions (median, ulnar, radial, musculocutaneous)",Time-to-event,No,"Primary: Kaplan–Meier with log-rank test (stratified by sex) and multivariable Cox regression adjusting for sex; sensitivity via Wilcoxon test 42
+
+Secondary:
+
+Time-to-event outcomes: Kaplan–Meier/log-rank and Cox (as above) 42
+
+Pain scores & opioid use: ANCOVA on VRS and log-transformed opioid consumption adjusting for sex ",blocked randomization,Block,Anesthesiology & Pain Medicine,14,92,
+43,NCT00066131,"Treatment of Periodontal Disease
+and the Risk of Preterm Birth",New England Journal of Medicine,10.1056/NEJMoa062249,2006,2,Control,Not Applicable,823,Gestational age at the end of pregnancy,Time-to-event,No,"Primary: Kaplan–Meier curves and log-rank test stratified by center; Cox proportional-hazards regression
+
+Competing-risks: live birth vs spontaneous abortion/stillbirth
+
+Secondary: t-tests (birth weight), Fisher’s exact or chi-square (proportions), Wilcoxon signed-rank (Apgar), linear mixed models for periodontal measures ","blocked randomization, stratify by center",Stratified Block,"Women's, Maternal & Child Health",797,50,
+44,NCT03057197,"Influence of needle-insertion depth on epidural
+spread and clinical outcomes in caudal epidural
+injections: a randomized clinical trial",Journal of Pain Research,10.2147/JPR.S182227,2018,2,Conventional,Not Applicable,127,Success rate of epidural spread without intravascular uptake (binary per patient),Binary,Yes,"Primary outcome: Chi-square test
+
+Continuous outcomes (pain scores): Student’s t-test
+
+Ordinal outcome (PGIC): Mann–Whitney U test
+
+Normality check: Shapiro–Wilk test",simple randomization,Simple,Anesthesiology & Pain Medicine,8,55,
+45,NCT04178824,"Impact of a randomized controlled trial of
+discounts on fruits, vegetables, and
+noncaloric beverages in NYC supermarkets on
+food intake and health risk factors",Plos one,10.1371/journal.pone.0291770,2023,3,0% Discount,Not Applicable,64,"Change in grams per day of:
+
+Fruit intake
+
+Vegetable intake
+
+Non‐caloric beverage intake (diet soda, bottled water, seltzer)",Continuous,"30%: Yes
+
+15%: No","Multiple linear regression of mid‐intervention values on group, adjusting for baseline and COVID-19 covariate; two‐tailed P<0.05 for significance; Cohen’s f² for effect sizes",stratified by store and sex,Stratified,"Nutrition, Metabolism & Lifestyle",3,242,
+46,,"Evaluating the effectiveness of a structured,
+simulator-assisted, peer-led training on cardiovascular
+physical examination in third-year medical students: a
+prospective, randomized, controlled trial",GMS Journal for Medical Education,10.3205/zma001504,2021,2,Control,Not Applicable,70,Total score (0–25) on a standardized cardiovascular-PE checklist,Continuous,Yes,"Normality check: Shapiro–Wilk
+
+Group comparisons: Independent t-test (for normal data) or Mann–Whitney U (non-normal), with Bonferroni correction for subdomains; Fisher’s exact for nominal
+
+Correlations: Spearman’s rs
+
+Adjusted analysis: Hierarchical multiple linear regression of total score on prespecified covariates, then group assignment",simple randomization,Simple,"General Medicine, Health Services & Education",16,101,
+47,U1111-1262-1740,"Comparison between high-flow
+nasal cannula (HFNC) therapy
+and noninvasive ventilation (NIV) in children
+with acute respiratory failure by bronchiolitis:
+a randomized controlled trial",BMC pediatrics,https://bmcpediatr.biomedcentral.com/articles/10.1186/s12887-024-05058-6,2024,2,NIV,Not Applicable,252,Requirement for invasive mechanical ventilation,Binary,Yes,"Primary outcome: Farrington-Manning test for noninferiority 47
+
+Group comparisons: Wilcoxon/Mann–Whitney test; chi-square test 47
+
+Time-to-event (intubation): Log-rank test 47
+
+Repeated measures: Friedman test with Wilcoxon paired post-hoc (Bonferroni correction) 47
+
+Effect size: Cohen’s d",simple randomization,Simple,"Women's, Maternal & Child Health",12,120,
+48,NCT01781780,"The effectiveness of breakfast recommendations on weight loss:
+a randomized controlled trial",The American journal of clinical nutrition,https://doi.org/10.3945/ajcn.114.089573,2014,3,Control,Not Applicable,255,Weight change from baseline to 16 weeks,Continuous,No,"Primary analysis:
+
+Ordinary least squares linear regression, adjusted for baseline covariates.
+
+Type II ANOVA for between-group comparisons.
+
+Multiple imputation for missing data (via MICE package in R).
+
+Secondary analyses:
+
+Compliance-adjusted regression using self-reported adherence.",Stratified block by eating status,Stratified Block,"Nutrition, Metabolism & Lifestyle",201,460,
+49,NCT03025815,"Impact of a pre-feeding oral stimulation
+program on first feed attempt in preterm
+infants: Double-blind controlled clinical trial",PloS one,https://doi.org/10.1371/journal.pone.0237915,2020,2,Control,Not Applicable,74,"Oral Feeding Skills (OFS) level at first oral feeding, which includes:
+
+Proficiency (PRO, % volume taken in first 5 minutes)
+
+Rate of Transfer (RT, mL/min)",Continuous; Ordinal,Yes,"Fisher’s exact test, Student’s t-test, Mann–Whitney U test
+
+Logistic regression (OFS level 4 vs. lower levels)
+
+Generalized estimating equations (GEE) for volume intake trends
+
+Cox proportional hazards model for time to full oral feeding","blocked randomization, stratified by gestational age",Stratified Block,"Women's, Maternal & Child Health",53,6030,
+50,cgd,A controlled trial of interferon gamma to prevent infection in chronic granulomatous disease,New England Journal of Medicine,10.1056/NEJM199102213240801,1991,2,Placebo,Not Applicable,128,Time to first serious infection (requiring hospitalisation + parenteral antibiotics),Time-to-event,Yes,"Time-to-event: Kaplan–Meier curves with log-rank test (for time to first serious infection).
+
+Binary/count outcomes: χ² or Fisher’s exact tests for proportions; comparisons of infection counts (likely Poisson or similar, though not specified)","
+stratified by inherit",Stratified,Infectious Diseases & Immunology,751,75,
+51,,The impact of sleep hygiene education and lavender essential oil inhalation on the sleep quality and overall well-being of athletes who undergo late-evening training: a randomized controlled trial,F1000Research,https://doi.org/10.12688/f1000research.150977.1,2024,4,Control,Not Applicable,37,Sleep latency over 7-day intervention,Continuous,Yes for sleep latency group comparison,One-way ANOVA/Kruskal-Wallis for actigraphy; two-way ANOVA or F1-LD-F1 model for repeated questionnaire outcomes,simple randomization,Simple,"Nutrition, Metabolism & Lifestyle",1,796,
+52,,Efficacy of tenapanor in managing hyperphosphatemia and constipation in hemodialysis patients: A randomized controlled trial,PLoS ONE,https://doi.org/10.1371/journal.pone.0319319,2025,2,Control,Not Applicable,69,Change in serum phosphorus at 23 weeks; tenapanor-arm stool consistency at 7 weeks,Continuous; Ordinal,"Mixed; BSFS improved within tenapanor group, serum phosphorus between-group difference not significant",Repeated-measures ANOVA for blood data; Sankey/McNemar with Bonferroni for BSFS/laxative changes; ITT,stratified randomization,Stratified,Nephrology,3,57,
+53,,"Analgesic Effect of Ultrasound-Guided Anterior Quadratus Lumborum Block at the L2 Level in Patients Undergoing Laparoscopic Partial Nephrectomy: A Single-Center, Randomized Controlled Trial",Pain Research and Management,https://doi.org/10.1155/2022/8958859,2022,2,Group 1/no block,Not Applicable,59,Total perioperative cumulative sufentanil consumption,Continuous,Yes,Independent/paired t-tests or Mann-Whitney/Wilcoxon; chi-square/Fisher exact for categorical outcomes,blocked randomization,Block,Anesthesiology & Pain Medicine,10,154,
+54,,Effect of Vaginal Spheres and Pelvic Floor Exercises on Female Sexual Function in Women with Urinary Incontinence: A Randomized Controlled Trial (Secondary Analysis),International Urogynecology Journal,https://doi.org/10.1007/s00192-025-06404-7,2025,2,Pelvic floor training,Not Applicable,69,FSFI total score at end of treatment,Continuous,No significant overall FSFI total between-group difference; desire domain significant,Mann-Whitney U tests; per-protocol primary analysis and ITT with multiple imputation sensitivity analysis,blocked randomization,Block,"Women's, Maternal & Child Health",2,4556,
+55,,Taking Charge After Acute Exacerbation of Chronic Obstructive Pulmonary Disease: A Randomized Controlled Feasibility Trial of a Psychologically Informed Self-Management Intervention,International Journal of COPD,https://doi.org/10.2147/copd.s393644,2023,2,Control/usual care,Not Applicable,56,Frequency of moderate or severe AECOPD within 12 months,Count,No significant primary rate difference,Poisson regression with log observation time offset,blocked randomization,Block,"Emergency, Pulmonary & Critical Care",6,91,
+56,ISRCTN94275121,Transcranial direct current stimulation and attention skills in burnout patients: a randomized blinded sham-controlled pilot study,F1000Research,https://doi.org/10.12688/f1000research.21831.2,2020,2,Sham tDCS,Not Applicable,15,RBANS Attention Index after 3 weeks,Continuous,Yes for tDCS-by-time interaction on attention,"Linear mixed model with fixed tDCS, time, and interaction effects and participant random effect",simple randomization,Simple,Mental & Behavioral Health,7,114,
+57,,Functional imagery training versus motivational interviewing for weight loss: a randomised controlled trial of brief individual interventions for overweight and obesity,International Journal of Obesity,https://doi.org/10.1038/s41366-018-0122-1,2018,2,Motivational interviewing,Not Applicable,121,Weight loss and waist-circumference reduction at 6 and 12 months,Continuous,Yes; FIT had greater weight and waist-circumference reductions than MI,Linear mixed-effects models for repeated weight and waist outcomes; Bayesian sensitivity models in supplement,simple randomization,Simple,"Nutrition, Metabolism & Lifestyle",100,602,
+58,ISRCTN13247154,Transcranial direct current stimulation and cognitive training in the treatment of cognitive deficit in schizophrenia: a randomized controlled trial,BMC Psychiatry,https://doi.org/10.1186/s12888-025-07749-5,2026,2,Sham tDCS + cognitive training,Not Applicable,30,Change in RBANS Total Score at 1 week,Continuous,No significant superiority of active tDCS over cognitive training alone,ANCOVA of one-week RBANS scores adjusted for baseline; Wilcoxon or t tests for PANSS changes,blocked randomization,Block,Mental & Behavioral Health,0,2139,
+59,,Acute effects of tissue flossing on ankle range of motion in athletes with limited ankle dorsiflexion: a randomized controlled trial,BMC Sports Science Medicine and Rehabilitation,https://doi.org/10.1186/s13102-025-01484-w,2025,2,Static stretching,Not Applicable,44,Dominant-leg ankle dorsiflexion ROM immediately post-intervention,Continuous,Yes; tissue flossing showed greater immediate dorsiflexion ROM improvement,Repeated-measures ANOVA with group-by-time interaction and post-hoc comparisons,simple randomization,Simple,Rehabilitation & Physical Medicine,1,470,
+60,UMIN000058249,Interferential current stimulation during dental facial treatment improves masticatory function,Scientific Reports,https://doi.org/10.1038/s41598-026-36307-6,2026,2,Sham,Not Applicable,46,Post-treatment glucose elution concentration after IW versus sham period,Continuous,Yes; IW improved glucose elution compared with sham,Mixed-effects model adjusted for period and sequence,randomized crossover sequence,Crossover,Dentistry & Oral Health,1,75,
+61,NCT01530685,"A Dietary Supplement Containing Cinnamon, Chromium and Carnosine Decreases Fasting Plasma Glucose and Increases Lean Mass in Overweight or Obese Pre-Diabetic Subjects: A Randomized, Placebo-Controlled Trial",PLoS ONE,https://doi.org/10.1371/journal.pone.0138646,2015,2,Placebo,Not Applicable,61,Change in fasting plasma glucose at 4 months,Continuous,Yes for fasting plasma glucose reduction in supplement arm,Between-arm comparisons of repeated metabolic changes from baseline,simple randomization,Simple,"Nutrition, Metabolism & Lifestyle",71,99,
+62,NCT00182559,Late Conversion of Kidney Transplant Recipients from Ciclosporin to Tacrolimus Improves Graft Function: Results from a Randomized Controlled Trial,PLoS ONE,https://doi.org/10.1371/journal.pone.0135674,2015,2,Cyclosporine,Not Applicable,141,Estimated glomerular filtration rate by CKD-EPI through 24 months,Continuous,Yes for model-estimated renal-function difference favoring tacrolimus conversion,Mixed model for repeated CKD-EPI eGFR adjusted for baseline renal function,simple randomization,Simple,Nephrology,3,235,
+63,,High-intensity interval training versus progressive high-intensity circuit resistance training on endothelial function and cardiorespiratory fitness in heart failure: A preliminary randomized controlled trial,PLoS ONE,https://doi.org/10.1371/journal.pone.0257607,2021,3,Control,Not Applicable,22,Change in peak VO2 and flow-mediated dilation after training,Continuous,Mixed; VO2 improved in training groups while FMD sample was smaller,"Repeated-measures comparisons of training effects across HIIT, circuit resistance, and control arms",simple randomization,Simple,Cardiovascular Medicine,40,103,
+64,,"Low-dose, non-supervised, health insurance initiated exercise for the treatment and prevention of chronic low back pain in employees. Results from a randomized controlled trial",PLoS ONE,https://doi.org/10.1371/journal.pone.0178585,2017,2,Wait-list control,Not Applicable,226,Change in low back pain VAS after 5 months,Continuous,Yes for low-back-pain change favoring exercise,Between-group comparison of 5-month change scores,stratified randomization,Stratified,Rehabilitation & Physical Medicine,18,823,
+65,NCT04005846,Can transcranial direct current stimulation (tDCS) over the motor cortex increase endurance running performance? a randomized crossover-controlled trial,PLoS ONE,https://doi.org/10.1371/journal.pone.0312084,2024,2,Sham tDCS,Not Applicable,45,Time to exhaustion in a running performance test,Continuous,No clear active tDCS improvement over sham in cleaned performance endpoint,"Randomized crossover comparisons of active, sham, and control endurance tests",randomized crossover sequence,Crossover,Neurology & Neurorehabilitation,1,127,
+66,NCT01366677,Ashtanga-Based Yoga Therapy Increases the Sensory Contribution to Postural Stability in Visually-Impaired Persons at Risk for Falls as Measured by the Wii Balance Board: A Pilot Randomized Controlled Trial,PLoS ONE,https://doi.org/10.1371/journal.pone.0129646,2015,2,Waitlist control,Not Applicable,17,Postural stability mean total velocity on foam-surface balance tasks,Continuous,Yes for foam eyes-open postural stability in the yoga arm,Paired tests within yoga arm and between-group comparisons of balance outcomes,simple randomization,Simple,Rehabilitation & Physical Medicine,46,64,
+67,DRKS00005254,Middle molecule clearance with high cut-off dialyzer versus high-flux dialyzer using continuous veno-venous hemodialysis with regional citrate anticoagulation: A prospective randomized controlled trial,PLoS ONE,https://doi.org/10.1371/journal.pone.0215823,2019,2,Standard filter,Not Applicable,60,Mean beta2-microglobulin clearance during continuous venovenous hemodialysis,Continuous,Yes for beta2-microglobulin clearance favoring high cut-off filter,Between-filter comparison of solute clearances during CVVHD,simple randomization,Simple,Nephrology,46,70,
+68,,A randomized controlled trial of a brain-computer interface based attention training program for ADHD,PLoS ONE,https://doi.org/10.1371/journal.pone.0216225,2019,2,Control,Not Applicable,172,Change in clinician-rated ADHD inattentive symptoms at week 8,Continuous,Yes for clinician-rated inattentive symptom improvement,Repeated-measures mixed/ANCOVA models of ADHD symptom trajectories,simple randomization,Simple,Neurology & Neurorehabilitation,94,252,
+69,,A Randomized Controlled Trial on the Effect of Tapentadol and Morphine on Conditioned Pain Modulation in Healthy Volunteers,PLoS ONE,https://doi.org/10.1371/journal.pone.0128997,2015,3,Placebo,Not Applicable,12,Conditioned pain modulation eVAS group-curve response,Continuous,Yes; tapentadol and morphine altered conditioned pain modulation curves versus placebo,Crossover time-course comparisons of electronic VAS responses with and without conditioning stimulus,randomized crossover sequence,Crossover,Anesthesiology & Pain Medicine,23,255,
+70,,"Enhancing Cognitive Abilities with Comprehensive Training: A Large, Online, Randomized, Active-Controlled Trial",PLoS ONE,https://doi.org/10.1371/journal.pone.0134467,2015,2,Crosswords control,Not Applicable,4715,Change in cognitive Grand Index after online training,Continuous,Yes for Lumosity improvement over crossword control on Grand Index,ANCOVA/regression of post-training cognitive outcomes adjusted for baseline,simple randomization,Simple,Neurology & Neurorehabilitation,174,74,
+71,CTRI/2016/09/007240,Effectiveness of antenatal screening of asymptomatic bacteriuria in reduction of prematurity and low birth weight: Evaluating a point-of-care rapid test in a pragmatic randomized controlled study,EClinicalMedicine,https://doi.org/10.1016/j.eclinm.2021.100762,2021,2,Control,Not Applicable,240,Composite preterm birth or low birth weight,Binary,Yes; intervention reduced the composite outcome in the audited dataset,Pragmatic randomized comparison of outcome proportions,simple randomization,Simple,Infectious Diseases & Immunology,9,5060,
+72,,"Treatment of post-partum haemorrhage with sublingual misoprostol versus oxytocin in women not exposed to oxytocin during labour: a double-blind, randomised, non-inferiority trial",The Lancet,https://doi.org/10.1016/s0140-6736(09)61924-3,2010,2,Oxytocin IV,Not Applicable,978,Active bleeding controlled within 20 minutes of PPH treatment,Binary,Non-inferiority trial; cleaned data reproduces the paper's active-bleeding-control counts,Double-blind randomized non-inferiority comparison of treatment success proportions,simple randomization,Simple,"Women's, Maternal & Child Health",127,128,
+73,,Coping with Complications that Occur after Prostate Biopsy for Satisfactory Evaluation of Call Service Using Artificial Intelligence: A Pilot Randomized Controlled Trial,The World Journal of Men s Health,https://doi.org/10.5534/wjmh.240191,2024,2,Human-assisted reassurance call,Not Applicable,29,Patient satisfaction with the reassurance-call service after prostate biopsy,Ordinal,Human-assisted reassurance calls had higher service satisfaction than AI-assisted calls,Two-arm comparison of the publication-defined call-service primary outcome,simple randomization,Simple,Surgery,0,37,
+74,,Effect of a Home‐Base Core Stability Exercises in Hereditary Ataxia. A Randomized Controlled Trial. A Pilot Randomized Controlled Trial,Movement Disorders Clinical Practice,https://doi.org/10.1002/mdc3.14036,2024,2,Standard care,Not Applicable,23,Change in SARA ataxia severity and Trunk Impairment Scale after intervention,Continuous,Mixed; primary and secondary functional outcomes favored exercise in selected domains,Assessor-blind randomized pilot trial with between-group comparisons of change scores,simple randomization,Simple,Neurology & Neurorehabilitation,9,69,
+75,,"Is conventional radiofrequency ablation of the superolateral branch, one of the three genicular nerves targeted as standard, necessary or not? A non-inferiority randomized controlled trial",The Korean journal of pain,https://doi.org/10.3344/kjp.24098,2024,2,Conventional three-branch RFA,Not Applicable,47,Change in numeric rating scale knee pain at 3 months,Continuous,Yes for non-inferiority of reduced-branch RFA,Non-inferiority randomized comparison of pain and WOMAC changes,simple randomization,Simple,Anesthesiology & Pain Medicine,1,59,
+76,,Comparison of time-segmented-target teaching and traditional teaching methods for spinal puncture: a randomized trial,Frontiers in Education,https://doi.org/10.3389/feduc.2025.1665203,2025,2,Traditional teaching,Not Applicable,134,Post-training spinal puncture total performance score,Continuous,Yes; time-segmented-target teaching improved performance score,Randomized comparison of post-training assessment scores,simple randomization,Simple,"General Medicine, Health Services & Education",0,69,
+77,,The effectiveness of core stability exercises on functional outcomes in early subacute stroke recovery: a randomized controlled trial,Topics in Stroke Rehabilitation,https://doi.org/10.1080/10749357.2024.2439712,2025,2,Control rehabilitation,Not Applicable,87,Change in Trunk Impairment Scale after core stability exercise,Continuous,Yes; core stability exercise improved trunk impairment,Randomized rehabilitation comparison of functional change scores,simple randomization,Simple,Neurology & Neurorehabilitation,2,56,
+78,NCT04363541,Regional moderate hyperthermia for mild-to-moderate COVID-19 (TherMoCoV study): a randomized controlled trial,Frontiers in Medicine,https://doi.org/10.3389/fmed.2023.1256197,2023,2,Control,Not Applicable,105,Any COVID-19 disease progression by 28 days,Binary,No clear reduction in 28-day disease progression,Open-label randomized comparison of progression risk and secondary clinical endpoints,minimization,Minimization,Infectious Diseases & Immunology,1,15,
+79,,Development and effects of a webtoon education program on preventive self-management related to premature labor for women of childbearing age: a randomized controlled trial,Korean journal of women health nursing/Yeoseong geon'gang ganho hag'hoeji/Yeoseong geon-gang ganho hakoeji,https://doi.org/10.4069/kjwhn.2022.09.22,2022,2,Control,Not Applicable,98,Premature-labor preventive self-management knowledge after education,Continuous,Yes; webtoon education improved knowledge and self-efficacy,Randomized pre-post-follow-up comparison of education outcomes,stratified randomization,Stratified,"Women's, Maternal & Child Health",9,121,
+80,,Efficacy of a Digital Peer Support Program on Weight Management and Mental Health in University Students With Preobesity: Randomized Controlled Trial,JMIR mhealth and uhealth,https://doi.org/10.2196/78960,2026,3,Control,Not Applicable,216,Change in BMI at 6 months,Continuous,Yes for BMI reduction in the digital peer-support arm,Randomized digital-health comparison of anthropometric and mental-health changes,simple randomization,Simple,"Nutrition, Metabolism & Lifestyle",1,30,
+81,,The impact of Aprepitant on Nausea and Vomiting following Laparoscopic Sleeve Gastrectomy: A Blinded Randomized Controlled Trial,Obesity Surgery,https://doi.org/10.1007/s11695-024-07129-0,2024,3,Placebo,Not Applicable,401,Nausea/PONV at 24 hours,Binary,Publication reviewed; primary statistical significance not clearly reported in metadata sources,Arm-level count/rate comparisons,simple randomization,Simple,Anesthesiology & Pain Medicine,17,44,
+82,NCT03807037,Incidence and Outcomes of Postoperative Atrial Fibrillation after Coronary Artery Bypass Grafting of a Randomized Controlled Trial: A Blinded End-of-cycle Analysis,Reviews in Cardiovascular Medicine,https://doi.org/10.31083/j.rcm2304122,2022,2,Not identifiable (blinded arm mapping not reported),Not Applicable,250,Occurrence of postoperative atrial fibrillation,Binary,Yes; publication reports statistically significant primary or main outcome effect,Arm-level and overall event summaries,simple randomization,Simple,Surgery,8,463,
+83,NCT03032731,"Effects of a Web-Based, Evolutionary Mismatch-Framed Intervention Targeting Physical Activity and Diet: a Randomised Controlled Trial",International Journal of Behavioral Medicine,https://doi.org/10.1007/s12529-019-09821-3,2019,2,Control,Not Applicable,59,Daily physical activity level and total energy intake at 12 weeks,Continuous,Yes; publication reports statistically significant primary or main outcome effect,ANCOVA/adjusted mean difference with descriptive change summaries,simple randomization,Simple,Mental & Behavioral Health,26,92,
+84,,Bouldering psychotherapy is not inferior to cognitive behavioural therapy in the group treatment of depression: A randomized controlled trial,British Journal of Clinical Psychology,https://doi.org/10.1111/bjc.12347,2021,2,CBT,Not Applicable,156,Depressive symptom severity assessed by MADRS and PHQ-9,Continuous,Yes; publication reports statistically significant primary or main outcome effect,Mixed-model ANOVA and non-inferiority comparisons,simple randomization,Simple,Neurology & Neurorehabilitation,31,61,
+85,NCT04468074,The effects of virtual reality neuroscience-based therapy on clinical and neuroimaging outcomes in patients with chronic back pain: a randomized clinical trial,Pain,https://doi.org/10.1097/j.pain.0000000000003198,2024,2,Wait-list control,Not Applicable,61,Brief Pain Inventory average pain intensity after treatment,Continuous,Yes; publication reports statistically significant primary or main outcome effect,Group comparisons of clinical pain outcomes,simple randomization,Simple,Anesthesiology & Pain Medicine,24,141,
+86,,VIBRANT: Vaginal lIve Biotherapeutic RANdomized Trial: A Phase 1 randomized trial of multi-strain vaginal <i>L. crispatus</i> live biotherapeutic products in people with bacterial vaginosis,medRxiv,https://doi.org/10.1101/2025.09.18.25336053,2025,5,Placebo,1,96,Detection of L. crispatus LBP strains by metagenomic sequencing in first five weeks,Binary,Publication reviewed; primary statistical significance not clearly reported in metadata sources,Primary safety and microbiome detection summaries,simple randomization,Simple,"Women's, Maternal & Child Health",3,22,
+87,,Comparison of hemodynamic response to tracheal intubation and postoperative pain in patients undergoing closed reduction of nasal bone fracture under general anesthesia: a randomized controlled trial comparing fentanyl and oxycodone,BMC Anesthesiology,https://doi.org/10.1186/s12871-016-0279-x,2016,2,Fentanyl,Not Applicable,64,Hemodynamic response after intubation and postoperative pain NRS/VAS in PACU,Continuous,Mixed: pain significant; hemodynamic deltas not significant,"Independent group comparisons; table reports means, medians, counts",simple randomization,Simple,Anesthesiology & Pain Medicine,19,226,
+88,NCT01028066,Effects of nutrition education on recurrent coronary events after percutaneous coronary intervention: A randomized clinical trial,BMC Nutrition,https://doi.org/10.1186/s40795-016-0111-5,2016,2,Control,Not Applicable,200,Mortality after one-year follow-up,Binary,No,Absolute risk reduction and Cox models in publication,simple randomization,Simple,Cardiovascular Medicine,5,135,
+89,ChiCTR-IOR-15007366,Overview of the NTCIR-10 cross-lingual link discovery task,BMC Complementary and Alternative Medicine,https://doi.org/10.1186/s12906-016-1337-0,2013,3,Nimodipine alone,Not Applicable,119,Montreal Cognitive Assessment score after three-month therapy,Continuous,Yes,Within- and between-group MoCA comparisons,simple randomization,Simple,Neurology & Neurorehabilitation,14,17,
+90,NCT01739816,Impact of a community pharmacist-led medication review on medicines use in patients on polypharmacy - a prospective randomised controlled trial,BMC Health Services Research,https://doi.org/10.1186/s12913-016-1384-8,2016,2,Control,Not Applicable,293,Objective adherence by MPR and DPPR,Continuous,No,Independent group comparisons of adherence summaries,simple randomization,Simple,"General Medicine, Health Services & Education",124,60,
+91,ISRCTN29869308,The MOVE-trial: Monocryl® vs. Vicryl Rapide™ for skin repair in mediolateral episiotomies: a randomized controlled trial,BMC Pregnancy and Childbirth,https://doi.org/10.1186/s12884-017-1545-8,2017,2,Vicryl Rapide,Not Applicable,126,VAS pain while sitting at 10 days,Continuous,No,Independent group comparisons of VAS and wound outcomes,simple randomization,Simple,"Women's, Maternal & Child Health",17,172,
+92,PACTR201610001823405,Improving malaria preventive practices and pregnancy outcomes through a health education intervention: A randomized controlled trial,Malaria Journal,https://doi.org/10.1186/s12936-021-03586-5,2021,2,Control,Not Applicable,371,Reported ITN use and IPTp doses four months post-intervention,Count; Ordinal,Yes,Chi-squared tests for practice and clinical outcomes,simple randomization,Simple,Infectious Diseases & Immunology,18,72,
+93,NCT01722734,The Impact of Text Message Reminders on Adherence to Antimalarial Treatment in Northern Ghana: A Randomized Trial,PLoS ONE,https://doi.org/10.1371/journal.pone.0109032,2014,3,Control,Not Applicable,1140,Self-reported completion of ACT antimalarial treatment,Binary,Yes,Logistic regression with clustered standard errors,simple randomization,Simple,Infectious Diseases & Immunology,86,38,
+94,NCT01690754,Impact of a Daily SMS Medication Reminder System on Tuberculosis Treatment Outcomes: A Randomized Controlled Trial,PLoS ONE,https://doi.org/10.1371/journal.pone.0162944,2016,2,Control,Not Applicable,2207,Clinically recorded tuberculosis treatment success,Binary,No,Group comparison and regression in publication,simple randomization,Simple,Infectious Diseases & Immunology,134,4715,
+95,,"Laryngeal mask vs. laryngeal tube trial in paediatric patients (LaMaTuPe): a single-blinded, open-label, randomised-controlled trial",European Journal of Emergency Medicine,https://doi.org/10.1097/mej.0000000000001178,2024,2,Laryngeal mask,Not Applicable,148,Insertion time in seconds,Continuous,Yes,Mann-Whitney U test; medians and IQR,blocked randomization,Block,Anesthesiology & Pain Medicine,8,240,
+96,,Effects of a Lamellar-Structured Ceramide-Containing Emulsion on the Skin Barrier Function of Surgical Nurses: A Randomized Controlled Trial,Not identified,Not identified,2025,2,Not identified,Not Applicable,35,Change in transepidermal water loss at 7 days,Continuous,Publication reviewed; primary statistical significance not clearly reported in metadata sources,Not audited; restored from backup without main publication audit,simple randomization,Simple,Surgery,0,978,
+97,NCT04211662,Effect of a tailored multidimensional intervention on the care burden among family caregivers of stroke survivors: a randomised controlled trial,BMJ Open,https://doi.org/10.1136/bmjopen-2021-049741,2022,2,Group 1,Not Applicable,110,zarit burden 3m,Continuous,No statistically significant primary effect reported,Repeated-measures/mixed-effects model,simple randomization,Simple,Neurology & Neurorehabilitation,33,44,
+98,NCT02143934,Strategies for Understanding and Reducing the Plasmodium vivax and Plasmodium ovale Hypnozoite Reservoir in Papua New Guinean Children: A Randomised Placebo-Controlled Trial and Mathematical Model,The Lancet,https://doi.org/10.1016/s0140-6736(13)61796-8,2013,2,Placebo,Not Applicable,499,pvivax qpcr infection 8m,Time-to-event,Yes; publication reports statistically significant primary or main outcome effect,Survival/time-to-event analysis,simple randomization,Simple,Infectious Diseases & Immunology,292,23,
+99,ACTRN12608000469314,Randomised controlled trial of an education and support package for stroke patients and their carers,BMJ,https://doi.org/10.1136/bmj.323.7304.8,2001,2,Control,Not Applicable,119,stroke knowledge 3m,Continuous,No statistically significant primary effect reported,ANCOVA/regression adjusted for baseline covariates,simple randomization,Simple,Neurology & Neurorehabilitation,116,47,
+100,,Supervised physical therapy vs. home exercise for patients with lumbar spinal stenosis: a randomized controlled trial,The Spine Journal,https://doi.org/10.1016/j.spinee.2019.04.009,2019,2,Home exercise,Not Applicable,86,Change in Zurich Claudication Questionnaire symptom-severity score at 6 weeks,Continuous,Yes; supervised physical therapy improved the primary responder rate versus home exercise,Two-sample comparison of change scores and MCID responder-rate analysis (intention-to-treat),individual 1:1 randomization with concealed allocation; sequence method not reported,Not reported,Rehabilitation & Physical Medicine,66,134,
+101,,Epidural abscess after dental extraction,Age and Ageing,https://doi.org/10.1093/ageing/afv094,2015,2,Standard care,Not Applicable,417,eq5d pain 3m,Ordinal,Publication reviewed; primary statistical significance not clearly reported in metadata sources,Between-arm comparison of randomized groups,simple randomization,Simple,Dentistry & Oral Health,9,87,
+102,NCT01876628,Adjunctive clindamycin for cellulitis: a clinical trial comparing flucloxacillin with or without clindamycin for the treatment of limb cellulitis,BMJ Open,https://doi.org/10.1136/bmjopen-2016-013260,2017,2,Flucloxacillin + clindamycin,Not Applicable,410,improved day5,Binary,No statistically significant primary effect reported,Between-arm comparison of proportions/logistic regression,simple randomization,Simple,Infectious Diseases & Immunology,45,105,
+103,NCT01136148,Economic Evaluation of a General Hospital Unit for Older People with Delirium and Dementia (TEAM Randomised Controlled Trial),PLOS ONE,https://doi.org/10.1371/journal.pone.0140662,2015,2,Standard care,Not Applicable,599,Observed quality-adjusted life years (QALYs) through 90 days,Continuous,No,Generalized linear models for costs and QALYs with baseline adjustment; multiple imputation in the publication,block randomization stratified by care-home residence,Stratified Block,"General Medicine, Health Services & Education",23,98,
+104,ACTRN12609000426280,"Perioperative medication management: expanding the role of the preadmission clinic pharmacist in a single centre, randomised controlled trial of collaborative prescribing",BMJ Open,https://doi.org/10.1136/bmjopen-2013-003027,2013,2,Usual care,Not Applicable,366,total medications,Count,Yes; publication reports statistically significant primary or main outcome effect,Between-arm comparison of randomized groups,simple randomization,Simple,Surgery,9,115,
+105,NCT01610323,A 12-Week Exercise Program for Pregnant Women with Obesity to Improve Physical Activity Levels: An Open Randomised Preliminary Study,BMC Pregnancy and Childbirth,https://doi.org/10.1186/s12884-015-0734-5,2015,2,Standard care,Not Applicable,50,counts per day 28w,Continuous,Yes; publication reports statistically significant primary or main outcome effect,Repeated-measures/mixed-effects model,simple randomization,Simple,"Women's, Maternal & Child Health",94,216,
+106,,Major depressive disorder,Nature Reviews Disease Primers,https://doi.org/10.1038/nrdp.2016.65,2016,2,Mentalization-based treatment,Not Applicable,44,hdrs 18w,Continuous,Publication reviewed; primary statistical significance not clearly reported in metadata sources,Between-arm comparison of randomized groups,simple randomization,Simple,Mental & Behavioral Health,2147,401,
+107,,A randomised trial comparing the clinical effectiveness of different emergency department healthcare professionals in soft tissue injury management,BMJ Open,https://doi.org/10.1136/bmjopen-2012-001092,2012,3,Doctor,Not Applicable,217,function 8w,Continuous,Yes; publication reports statistically significant primary or main outcome effect,Between-arm comparison of randomized groups,minimization,Minimization,"Emergency, Pulmonary & Critical Care",63,250,
+108,NCT03413891,Tranexamic acid and bleeding in patients treated with non-vitamin K oral anticoagulants undergoing dental extraction: The EXTRACT-NOAC randomized clinical trial,PLOS Medicine,https://doi.org/10.1371/journal.pmed.1003601,2021,2,Placebo,4,218,Any oral post-extraction bleeding through day 7,Binary,No; the primary bleeding outcome did not differ significantly between groups,Chi-squared test with risk ratio and 95% confidence interval for the primary outcome,computer-generated block randomization without stratification,Block,Dentistry & Oral Health,20,59,
+109,NCT04477811,A comparative study between Vitamin K1 and K2 on vascular calcification in hemodialysis patients: a randomized controlled trial,European Journal of Clinical Nutrition,https://doi.org/10.1038/s41430-021-01050-w,2021,3,Vitamin K1,Not Applicable,120,mgp post,Continuous,Publication reviewed; primary statistical significance not clearly reported in metadata sources,Between-arm comparison of randomized groups,simple randomization,Simple,Nephrology,11,156,
+110,,Iron Deficiency Anaemia in Pregnancy and Postpartum: Pathophysiology and Effect of Oral versus Intravenous Iron Therapy,Journal of Pregnancy,https://doi.org/10.1155/2012/630519,2012,2,Oral iron,Not Applicable,80,hgb 4w,Continuous,Yes; publication reports statistically significant primary or main outcome effect,Between-arm comparison of randomized groups,simple randomization,Simple,"Women's, Maternal & Child Health",168,61,
+111,,Effects of the abacus-based mental calculation training application “SoroTouch” on cognitive functions: A randomized controlled trial,PLoS ONE,https://doi.org/10.1371/journal.pone.0299201,2024,2,Control,Not Applicable,20,moca total post,Continuous,Publication reviewed; primary statistical significance not clearly reported in metadata sources,Between-arm comparison of randomized groups,simple randomization,Simple,Neurology & Neurorehabilitation,6,96,
+112,NCT01158391,Patterned frequency-modulated oral stimulation in preterm infants: A multicenter randomized controlled trial,PLoS ONE,https://doi.org/10.1371/journal.pone.0212675,2019,2,Non-pulsatile pacifier,Not Applicable,210,time to full oral feeds days,Time-to-event,Yes; publication reports statistically significant primary or main outcome effect,Survival/time-to-event analysis,simple randomization,Simple,"Women's, Maternal & Child Health",40,64,
+113,,A randomised controlled pilot study of standardised counselling and cost-free pharmacotherapy for smoking cessation among stroke and TIA patients,BMJ Open,https://doi.org/10.1136/bmjopen-2011-000366,2011,2,Usual care,Not Applicable,28,smoking abstinence 26w,Binary,Yes; publication reports statistically significant primary or main outcome effect,Between-arm comparison of proportions/logistic regression,simple randomization,Simple,Neurology & Neurorehabilitation,15,200,
+114,NCT01573299,Early Sitting in Ischemic Stroke Patients (SEVEL): A Randomized Controlled Trial,PLoS ONE,https://doi.org/10.1371/journal.pone.0149466,2016,2,Progressive sitting,Not Applicable,138,rankin 3m,Ordinal,Yes; publication reports statistically significant primary or main outcome effect,Between-arm comparison of proportions/logistic regression,simple randomization,Simple,Neurology & Neurorehabilitation,65,119,
+115,,A Short Message Service (SMS) increases postpartum care-seeking behavior and uptake of family planning of mothers in peri-urban public facilities in Kenya,PLoS ONE,https://doi.org/10.1371/journal.pone.0239213,2020,4,PP Checklist Only,Not Applicable,511,family planning uptake,Binary,No statistically significant primary effect reported,Between-arm comparison of proportions/logistic regression,simple randomization,Simple,"Women's, Maternal & Child Health",40,577,
+116,NCT05262621,"Effects of music intervention combined with progressive muscle relaxation on anxiety, depression, stress and quality of life among women with cancer receiving chemotherapy: A pilot randomized controlled trial",PLoS ONE,https://doi.org/10.1371/journal.pone.0293060,2023,2,Not identified from compact source,Not Applicable,24,DASS total and FACT-G total at T2/change from baseline,Continuous,Pilot/feasibility trial; efficacy success not primary,Between-arm comparison of randomized groups,simple randomization,Simple,Oncology,31,293,
+117,,Ketamine and Ketamine Metabolite Pharmacology: Insights into Therapeutic Mechanisms,Pharmacological Reviews,https://doi.org/10.1124/pr.117.015198,2018,3,Saline,Not Applicable,25,Post-pre respiratory variability metrics MRR/VRR/VTV,Continuous,Publication reviewed; primary statistical significance not clearly reported in metadata sources,Between-arm comparison of randomized groups,simple randomization,Simple,Anesthesiology & Pain Medicine,1253,126,
+118,,Cerebrolysin and repetitive transcranial magnetic stimulation (rTMS) in patients with traumatic brain injury: a three-arm randomized trial,Frontiers in Neuroscience,https://doi.org/10.3389/fnins.2023.1186751,2023,3,PLC+SHM,Not Applicable,86,Cognitive composite and MoCA follow-up scores,Continuous,Yes; publication reports statistically significant primary or main outcome effect,Between-arm comparison of randomized groups,simple randomization,Simple,Neurology & Neurorehabilitation,12,371,
+119,,Pain perceived during hysteroscopic morcellation by vaginoscopy versus standard technique in an outpatient setting: a randomized controlled trial,European Journal of Obstetrics & Gynecology and Reproductive Biology,https://doi.org/10.1016/j.ejogrb.2025.114544,2025,2,Not identified from compact source,Not Applicable,57,Pain score during hysteroscopic morcellation,Continuous,Publication reviewed; primary statistical significance not clearly reported in metadata sources,Between-arm comparison of randomized groups,simple randomization,Simple,"Women's, Maternal & Child Health",1,1140,
+120,NCT02583516,Intermittent BRAF inhibition in advanced BRAF mutated melanoma results of a phase II randomized trial,Nature Communications,https://doi.org/10.1038/s41467-021-26572-6,2021,2,Continuous treatment,2,70,Progression-free survival months and event indicator,Time-to-event,Publication reviewed; primary statistical significance not clearly reported in metadata sources,Survival analysis in publication; compact data retain PFS/OS summaries,simple randomization,Simple,Oncology,44,2207,
+121,,Acceptance lowers stress reactivity: Dismantling mindfulness training in a randomized controlled trial,Psychoneuroendocrinology,https://doi.org/10.1016/j.psyneuen.2017.09.015,2017,3,Control,Not Applicable,144,Subjective stress reactivity composite,Continuous,Publication reviewed; primary statistical significance not clearly reported in metadata sources,Between-arm comparison of randomized groups,simple randomization,Simple,Mental & Behavioral Health,227,148,
+122,DRKS00023088,Placebo effects improve sickness symptoms and drug efficacy during systemic inflammation: a randomized controlled trial in human experimental endotoxemia,BMC Medicine,https://doi.org/10.1186/s12916-025-04292-8,2025,4,group_1_medication_1_communication_1,Not Applicable,124,Bodily sickness symptoms and affective symptoms through 6 hours,Continuous,Publication reports ibuprofen and positive-labeling symptom effects,Between-arm comparison of randomized groups,factorial randomization,Factorial,Infectious Diseases & Immunology,1,35,
+123,NCT04697082,Platelet-rich plasma treatment improves postoperative recovery in patients with pilonidal sinus disease: a randomized controlled clinical trial,BMC Surgery,https://doi.org/10.1186/s12893-021-01370-5,2021,3,group_A,Not Applicable,49,Wound healing speed in days,Continuous,Publication reports improved postoperative recovery with platelet-rich plasma,Between-arm comparison of randomized groups,simple randomization,Simple,Surgery,20,110,
+124,NCT00431808,Phase 1 randomized controlled trial to evaluate the safety and immunogenicity of recombinant Pichia pastoris-expressed Plasmodium falciparum apical membrane antigen 1 (PfAMA1-FVO [25-545]) in healthy Malian adults in Bandiagara,Malaria Journal,https://doi.org/10.1186/s12936-016-1466-4,2016,2,Tetanus_Toxoid,1,40,"Immunogenicity measures IgG, GIA05, and GIA10 at day 84",Continuous,Yes; publication reports statistically significant primary or main outcome effect,Between-arm comparison of randomized groups,simple randomization,Simple,Infectious Diseases & Immunology,38,499,
+125,NCT00926744,"Effect of a 1-year intervention comprising brief counselling sessions and low-dose physical activity recommendations in Japanese adults, and retention of the effect at 2 years: a randomized trial",BMC Sports Science Medicine and Rehabilitation,https://doi.org/10.1186/s13102-021-00360-7,2021,3,control,Not Applicable,574,"Year-1 step count, PA MET-hours, and moderate physical activity",Continuous,Yes; publication reports statistically significant primary or main outcome effect,Between-arm comparison of randomized groups,simple randomization,Simple,"Nutrition, Metabolism & Lifestyle",10,119,
