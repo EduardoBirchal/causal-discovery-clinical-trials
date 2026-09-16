@@ -52,7 +52,7 @@ def save_causal_graph(model: lingam.VARLiNGAM, labels: List[str], output_path: s
     try:
         # For VARLiNGAM, adjacency_matrices_ is a list of matrices for each lag.
         # make_dot can handle the list of matrices to visualize contemporaneous and lagged effects.
-        dot = make_dot(np.hstack(model.adjacency_matrices_), labels=labels)
+        dot = make_dot(np.hstack(model.adjacency_matrices_), ignore_shape=True, labels=labels)
         
         # Write the Graphviz source directly to a .dot file
         with open(output_path, 'w', encoding='utf-8') as f:
@@ -223,6 +223,14 @@ if __name__ == "__main__":
     df_29 = df_29.drop(columns=['X_csf_qcc_0w'])
     datasets.append((df_29, "trial29.csv"))
 
+    df_37 = load_dataset("cleaned_data/trial37.csv")
+    df_37 = df_37.drop(columns=['X_pdstent_0d',
+                                'X_sodsom_0d',
+                                'X_bsphinc_0d',
+                                'X_chole_0d'
+                                ])
+    datasets.append((df_37, "trial37.csv"))
+
     df_116 = load_dataset("cleaned_data/trial116.csv")
     df_116 = df_116.drop(columns=['X_source_id', 
                                   'YP_dass_total_t2', 
@@ -240,10 +248,10 @@ if __name__ == "__main__":
                                   'X_cancer_diagnosis_code'
                                   ])
     datasets.append((df_116, "trial116.csv"))
+    print(f"colunas em 116: {len(df_116.columns)}")
 
     dfs_to_load = [
             "cleaned_data/trial13.csv",
-            "cleaned_data/trial37.csv",
             "cleaned_data/trial108.csv",
             "cleaned_data/trial120.csv",
         ]
@@ -253,4 +261,7 @@ if __name__ == "__main__":
         if df is not None:
             datasets.append((df, os.path.basename(path)))
 
-    run_pipeline(datasets)
+    if datasets:
+        run_pipeline(datasets)
+    else:
+        print("Please provide a list of datasets in the 'datasets' list to run the pipeline.")

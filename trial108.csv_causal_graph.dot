@@ -1,0 +1,48 @@
+digraph {
+	Treatment
+	YP_composite_14d
+	YS_death_14d
+	YS_dialysis_14d
+	YS_aki_progression_14d
+	X_age_years
+	X_sex
+	X_hospital
+	X_baseline_creatinine
+	X_sofa_0d
+	X_initial_egfr
+	YP_composite_14d -> Treatment [label=0.80]
+	YS_death_14d -> Treatment [label=0.58]
+	YS_death_14d -> YP_composite_14d [label=0.29]
+	Treatment -> YS_dialysis_14d [label=0.95]
+	YP_composite_14d -> YS_dialysis_14d [label=-0.60]
+	YS_death_14d -> YS_dialysis_14d [label=0.27]
+	Treatment -> YS_aki_progression_14d [label=4.19]
+	YS_dialysis_14d -> YS_aki_progression_14d [label=-6.53]
+	X_age_years -> YS_aki_progression_14d [label=1.40]
+	X_sex -> YS_aki_progression_14d [label=1.20]
+	YP_composite_14d -> X_sex [label=0.24]
+	YS_death_14d -> X_sex [label=-0.24]
+	YS_dialysis_14d -> X_sex [label=-0.31]
+	X_age_years -> X_sex [label=0.12]
+	Treatment -> X_hospital [label=0.12]
+	YS_death_14d -> X_hospital [label=0.70]
+	YS_dialysis_14d -> X_hospital [label=-0.29]
+	X_age_years -> X_hospital [label=-0.23]
+	X_sex -> X_hospital [label=0.03]
+	Treatment -> X_baseline_creatinine [label=0.41]
+	YP_composite_14d -> X_baseline_creatinine [label=1.49]
+	YS_death_14d -> X_baseline_creatinine [label=0.61]
+	YS_dialysis_14d -> X_baseline_creatinine [label=0.43]
+	X_age_years -> X_baseline_creatinine [label=-0.55]
+	X_sex -> X_baseline_creatinine [label=-0.09]
+	X_hospital -> X_baseline_creatinine [label=0.86]
+	YP_composite_14d -> X_sofa_0d [label=-2.09]
+	YS_aki_progression_14d -> X_sofa_0d [label=-0.71]
+	X_age_years -> X_sofa_0d [label=-8.24]
+	X_sex -> X_sofa_0d [label=-1.18]
+	X_hospital -> X_sofa_0d [label=-33.13]
+	X_baseline_creatinine -> X_sofa_0d [label=-0.71]
+	{
+		rank=same
+	}
+}

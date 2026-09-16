@@ -1,0 +1,28 @@
+digraph {
+	Treatment
+	YP_factg_total_t2
+	YS_dass_total_t1
+	YS_delta_dass_total_t1
+	X_factg_total_0m
+	X_education_code
+	X_religion_code
+	X_job_code
+	X_cancer_stage_code
+	X_chemotherapy_time
+	X_regimen_number
+	YP_factg_total_t2 -> Treatment [label=0.53]
+	YS_dass_total_t1 -> Treatment [label=-0.39]
+	X_religion_code -> Treatment [label=6.63]
+	X_chemotherapy_time -> Treatment [label=-6.65]
+	X_regimen_number -> Treatment [label=4.00]
+	YS_dass_total_t1 -> YP_factg_total_t2 [label=0.68]
+	X_religion_code -> YP_factg_total_t2 [label=14.80]
+	X_cancer_stage_code -> YP_factg_total_t2 [label=-0.53]
+	YP_factg_total_t2 -> YS_delta_dass_total_t1 [label=0.23]
+	X_regimen_number -> YS_delta_dass_total_t1 [label=12.89]
+	X_religion_code -> X_factg_total_0m [label=-1.53]
+	X_chemotherapy_time -> X_religion_code [label=0.32]
+	{
+		rank=same
+	}
+}
