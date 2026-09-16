@@ -10,18 +10,62 @@ digraph {
 	X_cancer_stage_code
 	X_chemotherapy_time
 	X_regimen_number
+	Treatment
+	YP_factg_total_t2
+	YS_dass_total_t1
+	YS_delta_dass_total_t1
+	X_factg_total_0m
+	X_education_code
+	X_religion_code
+	X_job_code
+	X_cancer_stage_code
+	X_chemotherapy_time
+	X_regimen_number
 	YP_factg_total_t2 -> Treatment [label=0.53]
 	YS_dass_total_t1 -> Treatment [label=-0.39]
 	X_religion_code -> Treatment [label=6.63]
 	X_chemotherapy_time -> Treatment [label=-6.65]
 	X_regimen_number -> Treatment [label=4.00]
+	Treatment -> Treatment [label=-0.33]
+	YP_factg_total_t2 -> Treatment [label=0.73]
+	YS_dass_total_t1 -> Treatment [label=-0.72]
+	X_factg_total_0m -> Treatment [label=1.44]
+	X_education_code -> Treatment [label=10.88]
+	X_religion_code -> Treatment [label=-7.43]
+	X_job_code -> Treatment [label=4.15]
+	X_cancer_stage_code -> Treatment [label=0.30]
+	X_chemotherapy_time -> Treatment [label=-8.95]
+	X_regimen_number -> Treatment [label=6.35]
 	YS_dass_total_t1 -> YP_factg_total_t2 [label=0.68]
 	X_religion_code -> YP_factg_total_t2 [label=14.80]
 	X_cancer_stage_code -> YP_factg_total_t2 [label=-0.53]
+	X_religion_code -> YP_factg_total_t2 [label=11.50]
+	X_cancer_stage_code -> YP_factg_total_t2 [label=-0.36]
+	X_chemotherapy_time -> YP_factg_total_t2 [label=-6.81]
+	X_regimen_number -> YP_factg_total_t2 [label=6.44]
+	Treatment -> YS_dass_total_t1 [label=0.59]
 	YP_factg_total_t2 -> YS_delta_dass_total_t1 [label=0.23]
 	X_regimen_number -> YS_delta_dass_total_t1 [label=12.89]
+	Treatment -> YS_delta_dass_total_t1 [label=-0.88]
+	YP_factg_total_t2 -> YS_delta_dass_total_t1 [label=0.46]
+	YS_dass_total_t1 -> YS_delta_dass_total_t1 [label=-0.38]
+	YS_delta_dass_total_t1 -> YS_delta_dass_total_t1 [label=-0.50]
+	X_education_code -> YS_delta_dass_total_t1 [label=14.92]
+	X_religion_code -> YS_delta_dass_total_t1 [label=-8.97]
+	X_job_code -> YS_delta_dass_total_t1 [label=8.48]
+	X_cancer_stage_code -> YS_delta_dass_total_t1 [label=0.42]
+	X_chemotherapy_time -> YS_delta_dass_total_t1 [label=-19.17]
+	X_regimen_number -> YS_delta_dass_total_t1 [label=14.31]
 	X_religion_code -> X_factg_total_0m [label=-1.53]
 	X_chemotherapy_time -> X_religion_code [label=0.32]
+	Treatment -> X_cancer_stage_code [label=0.52]
+	YS_dass_total_t1 -> X_cancer_stage_code [label=-0.52]
+	X_regimen_number -> X_cancer_stage_code [label=-10.12]
+	YP_factg_total_t2 -> X_regimen_number [label=0.02]
+	YS_dass_total_t1 -> X_regimen_number [label=-0.02]
+	YS_delta_dass_total_t1 -> X_regimen_number [label=0.03]
+	X_education_code -> X_regimen_number [label=-0.30]
+	X_chemotherapy_time -> X_regimen_number [label=0.21]
 	{
 		rank=same
 	}

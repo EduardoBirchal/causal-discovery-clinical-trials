@@ -52,7 +52,7 @@ def save_causal_graph(model: lingam.VARLiNGAM, labels: List[str], output_path: s
     try:
         # For VARLiNGAM, adjacency_matrices_ is a list of matrices for each lag.
         # make_dot can handle the list of matrices to visualize contemporaneous and lagged effects.
-        dot = make_dot(np.hstack(model.adjacency_matrices_), ignore_shape=True, labels=labels)
+        dot = make_dot(np.hstack(model.adjacency_matrices_), ignore_shape=True, labels=(labels * len(model.adjacency_matrices_)))
         
         # Write the Graphviz source directly to a .dot file
         with open(output_path, 'w', encoding='utf-8') as f:

@@ -22,6 +22,29 @@ digraph {
 	X_HB_BASELINE_0min
 	X_INDUCTION_0min
 	X_SI_BASELINE_0min
+	Treatment
+	YP_TOTALBLOOD
+	YP_PPH500
+	YS_SYSBP_30min
+	YS_DIASBP_30min
+	YS_HR_30min
+	YS_BLD_30min
+	YS_SYSBP_60min
+	YS_DIASBP_60min
+	YS_HR_60min
+	YS_BLD_60min
+	YS_UTEROTONICOS
+	YS_PPH1000
+	YS_SI_15min
+	YS_SI_30min
+	YS_SI_45min
+	YS_SI_60min
+	YS_HB_CHG
+	X_AGE_0min
+	X_PARITY_0min
+	X_HB_BASELINE_0min
+	X_INDUCTION_0min
+	X_SI_BASELINE_0min
 	YP_TOTALBLOOD -> Treatment [label=389.50]
 	YS_DIASBP_60min -> Treatment [label=1.60]
 	YS_SI_30min -> Treatment [label=12.58]
@@ -34,6 +57,8 @@ digraph {
 	YS_UTEROTONICOS -> YP_PPH500 [label=-70.29]
 	YS_SI_15min -> YP_PPH500 [label=8.35]
 	X_PARITY_0min -> YP_PPH500 [label=-8.96]
+	Treatment -> YP_PPH500 [label=0.04]
+	YS_HR_60min -> YP_PPH500 [label=-0.04]
 	YP_PPH500 -> YS_SYSBP_30min [label=0.38]
 	YS_DIASBP_30min -> YS_SYSBP_30min [label=0.20]
 	YS_SYSBP_60min -> YS_SYSBP_30min [label=0.33]
@@ -45,6 +70,8 @@ digraph {
 	YS_SI_60min -> YS_DIASBP_30min [label=-1.28]
 	X_PARITY_0min -> YS_DIASBP_30min [label=7.34]
 	X_SI_BASELINE_0min -> YS_DIASBP_30min [label=8.80]
+	YS_SI_30min -> YS_DIASBP_30min [label=0.80]
+	X_SI_BASELINE_0min -> YS_DIASBP_30min [label=-3.96]
 	YS_HR_60min -> YS_HR_30min [label=0.83]
 	YS_SYSBP_60min -> YS_BLD_30min [label=0.86]
 	YS_DIASBP_60min -> YS_BLD_30min [label=-0.09]
