@@ -1,17 +1,17 @@
 digraph {
 fontsize=18;
 dpi=200;
-0 [label=X1];
-1 [label=X2];
-2 [label=X3];
-3 [label=X4];
-4 [label=X5];
-5 [label=X6];
-6 [label=X7];
-7 [label=X8];
-8 [label=X9];
-9 [label=X10];
-10 [label=X11];
+0 [label="YP_composite_14d"];
+1 [label="YS_death_14d"];
+2 [label="YS_dialysis_14d"];
+3 [label="YS_aki_progression_14d"];
+4 [label="X_age_years"];
+5 [label="X_sex"];
+6 [label="X_hospital"];
+7 [label="X_baseline_creatinine"];
+8 [label="X_sofa_0d"];
+9 [label="X_initial_egfr"];
+10 [label="Treatment_Usual care"];
 0 -> 1 [dir=both, arrowtail=none, arrowhead=normal];
 0 -> 3 [dir=both, arrowtail=none, arrowhead=normal];
 2 -> 1 [dir=both, arrowtail=none, arrowhead=normal];

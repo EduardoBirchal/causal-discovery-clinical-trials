@@ -56,11 +56,11 @@ def save_causal_graph(causal_graph, labels: List[str], output_path: str):
         output_path (str): The file path where the .dot file will be saved.
     """
     try:
-        dot = GraphUtils.to_pydot(causal_graph.G)
+        dot = GraphUtils.to_pydot(causal_graph.G, labels=labels)
         dot.write(path=output_path)
         
     except Exception as e:
-        print(f"[{time.strftime('%H:%M:%S')}] WARNING: make_dot failed ({e}).")
+        print(f"[{time.strftime('%H:%M:%S')}] WARNING: to_pydot failed ({e}).")
 
 
 def impute_and_encode_features(df: pd.DataFrame) -> pd.DataFrame:
@@ -255,7 +255,7 @@ def process_single_dataset(df: pd.DataFrame, df_name: str, background_knowledge:
         return
 
     # 3. Export
-    labels = df.columns.tolist()
+    labels = df_processed.columns.tolist()
     output_dot_path = f"causal_graphs/static_{df_name}_causal_graph.dot"
     save_causal_graph(model, labels, output_dot_path)
 
