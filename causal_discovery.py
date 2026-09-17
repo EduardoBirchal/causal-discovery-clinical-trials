@@ -3,6 +3,7 @@ import time
 import pandas as pd
 import lingam
 import numpy as np
+import networkx as nx
 from lingam.utils import make_dot
 from typing import List, Optional, Tuple
 from sklearn.compose import ColumnTransformer
@@ -72,6 +73,7 @@ def save_causal_graph(model: lingam.VARLiNGAM, labels: List[str], output_path: s
             f.write(dot.source)
     except Exception as e:
         print(f"[{time.strftime('%H:%M:%S')}] WARNING: make_dot with adjacency_matrices_ failed ({e}). Trying with instantaneous effects only (lag 0).")
+        print(f"Length of adjacency_matrices[0]: {len(model.adjacency_matrices_[0])}\nLength of labels: {len(labels)}")
         try:
             # Fallback to contemporaneous effects if the list is not supported
             dot = make_dot(model.adjacency_matrices_[0], labels=labels)
@@ -80,7 +82,7 @@ def save_causal_graph(model: lingam.VARLiNGAM, labels: List[str], output_path: s
         except Exception as e_inner:
             print(f"[{time.strftime('%H:%M:%S')}] ERROR: Failed to save .dot file to {output_path}. Reason: {e_inner}")
 
-def impute_and_encode_features(df: pd.DataFrame) -> pd.DataFrame:
+def impute_and_encode_features(df: pd.DataFrame):
     """Imputes missing values (median for numeric, mode for categorical)
 
     and one-hot encodes categorical columns for numeric compatibility.
@@ -124,7 +126,7 @@ def impute_and_encode_features(df: pd.DataFrame) -> pd.DataFrame:
             df_imputed, columns=categorical_cols, drop_first=True
         )
 
-    return df_imputed.apply(pd.to_numeric)
+    return df_imputed.apply(pd.to_numeric), df_imputed.columns
 
 
 def fit_varlingam(
@@ -163,6 +165,43 @@ def export_causal_graph(
     save_causal_graph(model, labels, output_dot_path)
 
 
+def check_and_extract_cycles(
+    varlingam_model,
+    variable_names: list[str] | None = None,
+    include_lags: bool = True,
+    threshold: float = 1e-5,
+) -> tuple[bool, list[list[str]]]:
+    """
+    Checks if a VAR-LiNGAM result contains cycles and extracts them.
+    """
+
+    # Extract adjacency matrices
+    adj_matrices = varlingam_model.adjacency_matrices_
+
+    # In VAR-LiNGAM, adj_matrices has shape (n_lags + 1, n_features, n_features)
+    # where adj_matrices[0] is B0 (lag 0) and adj_matrices[tau] is B_tau
+    n_vars = adj_matrices.shape[1]
+    if variable_names is None:
+        variable_names = [f"x{i}" for i in range(n_vars)]
+
+    G = nx.DiGraph()
+    G.add_nodes_from(variable_names)
+
+    matrices_to_evaluate = adj_matrices if include_lags else [adj_matrices[0]]
+
+    # VAR-LiNGAM convention: row i is target, col j is source (x_j -> x_i)
+    for B in matrices_to_evaluate:
+        rows, cols = np.where(np.abs(B) > threshold)
+        for target_idx, source_idx in zip(rows, cols):
+            if target_idx != source_idx:  # Skip self-loops if considering summary graph
+                G.add_edge(variable_names[source_idx], variable_names[target_idx])
+
+    is_dag = nx.is_directed_acyclic_graph(G)
+    cycles = list(nx.simple_cycles(G)) if not is_dag else []
+
+    return is_dag, cycles
+
+
 def process_single_dataset(df: pd.DataFrame, df_name: str) -> None:
     """Orchestrates dataset preprocessing, causal discovery, and artifact saving."""
     print(
@@ -176,7 +215,7 @@ def process_single_dataset(df: pd.DataFrame, df_name: str) -> None:
         return
 
     # 1. Preprocess & Impute
-    df_processed = impute_and_encode_features(df)
+    df_processed, new_columns = impute_and_encode_features(df)
     if df_processed.empty or df_processed.shape[1] < 2:
         print(
             f"[{time.strftime('%H:%M:%S')}] WARNING: Dataset '{df_name}' has insufficient numeric data after preprocessing. Skipping."
@@ -188,8 +227,18 @@ def process_single_dataset(df: pd.DataFrame, df_name: str) -> None:
     if model is None:
         return
 
+    # 2.5. Check if graph is DAG
+    print("Checking if the graph is DAG...")
+
+    try:
+        is_dag, cycles = check_and_extract_cycles(model, list(df.columns), True)
+        print(is_dag)
+
+    except Exception as e:
+        print("ERROR: ", e)
+
     # 3. Export
-    labels = df.columns.tolist()
+    labels = new_columns.to_list()
     output_dot_path = f"{df_name}_causal_graph.dot"
     save_causal_graph(model, labels, output_dot_path)
 

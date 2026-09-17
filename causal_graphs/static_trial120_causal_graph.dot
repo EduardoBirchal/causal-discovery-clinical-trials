@@ -1,0 +1,18 @@
+digraph {
+fontsize=18;
+dpi=200;
+0 [label=X1];
+1 [label=X2];
+2 [label=X3];
+3 [label=X4];
+4 [label=X5];
+5 [label=X6];
+6 [label=X7];
+7 [label=X8];
+2 -> 1 [dir=both, arrowtail=none, arrowhead=normal];
+3 -> 1 [dir=both, arrowtail=none, arrowhead=normal];
+5 -> 1 [dir=both, arrowtail=none, arrowhead=normal];
+2 -> 4 [dir=both, arrowtail=none, arrowhead=normal];
+3 -> 4 [dir=both, arrowtail=none, arrowhead=normal];
+6 -> 7 [dir=both, arrowtail=none, arrowhead=none];
+}

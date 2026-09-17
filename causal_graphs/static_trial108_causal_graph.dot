@@ -1,0 +1,34 @@
+digraph {
+fontsize=18;
+dpi=200;
+0 [label=X1];
+1 [label=X2];
+2 [label=X3];
+3 [label=X4];
+4 [label=X5];
+5 [label=X6];
+6 [label=X7];
+7 [label=X8];
+8 [label=X9];
+9 [label=X10];
+10 [label=X11];
+0 -> 1 [dir=both, arrowtail=none, arrowhead=normal];
+0 -> 3 [dir=both, arrowtail=none, arrowhead=normal];
+2 -> 1 [dir=both, arrowtail=none, arrowhead=normal];
+1 -> 3 [dir=both, arrowtail=none, arrowhead=normal];
+1 -> 8 [dir=both, arrowtail=none, arrowhead=normal];
+3 -> 2 [dir=both, arrowtail=none, arrowhead=normal];
+7 -> 2 [dir=both, arrowtail=none, arrowhead=normal];
+2 -> 8 [dir=both, arrowtail=none, arrowhead=none];
+4 -> 3 [dir=both, arrowtail=none, arrowhead=normal];
+5 -> 4 [dir=both, arrowtail=none, arrowhead=normal];
+4 -> 6 [dir=both, arrowtail=none, arrowhead=normal];
+4 -> 7 [dir=both, arrowtail=none, arrowhead=normal];
+9 -> 4 [dir=both, arrowtail=none, arrowhead=normal];
+5 -> 7 [dir=both, arrowtail=none, arrowhead=normal];
+5 -> 8 [dir=both, arrowtail=none, arrowhead=normal];
+8 -> 6 [dir=both, arrowtail=none, arrowhead=normal];
+9 -> 6 [dir=both, arrowtail=none, arrowhead=normal];
+8 -> 7 [dir=both, arrowtail=none, arrowhead=normal];
+9 -> 7 [dir=both, arrowtail=none, arrowhead=normal];
+}

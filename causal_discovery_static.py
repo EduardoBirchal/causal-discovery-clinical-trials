@@ -3,11 +3,16 @@ import time
 import pandas as pd
 import lingam
 import numpy as np
+import causal_orderings
 from lingam.utils import make_dot
 from typing import Dict, List, Optional, Set, Tuple
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from causallearn.search.ConstraintBased.PC import pc
+from causallearn.graph.GraphNode import GraphNode
+from causallearn.utils.PCUtils.BackgroundKnowledge import BackgroundKnowledge
+from causallearn.utils.GraphUtils import GraphUtils
+
 import itertools
 
 def load_dataset(file_path: str) -> Optional[pd.DataFrame]:
@@ -28,7 +33,7 @@ def load_dataset(file_path: str) -> Optional[pd.DataFrame]:
         print(f"[{time.strftime('%H:%M:%S')}] ERROR: Failed to load {file_path}. Reason: {e}")
         return None
 
-def row_to_timeseries(df: pd.Series) -> pd.DataFrame:
+def row_to_timeseries(row: pd.Series):
     """
     Converts a single row of a DataFrame into a time series DataFrame.
     
@@ -39,32 +44,23 @@ def row_to_timeseries(df: pd.Series) -> pd.DataFrame:
         pd.DataFrame: A DataFrame with one column representing the time series.
     """
 
-def save_causal_graph(model: lingam.VARLiNGAM, labels: List[str], output_path: str):
+    return None
+
+def save_causal_graph(causal_graph, labels: List[str], output_path: str):
     """
     Saves the causal graph as a .dot file.
     
     Args:
-        model (lingam.VARLiNGAM): The fitted VARLiNGAM model.
+        causal_graph: The causal graph.
         labels (List[str]): List of variable names.
         output_path (str): The file path where the .dot file will be saved.
     """
     try:
-        # For VARLiNGAM, adjacency_matrices_ is a list of matrices for each lag.
-        # make_dot can handle the list of matrices to visualize contemporaneous and lagged effects.
-        dot = make_dot(np.hstack(model.adjacency_matrices_), ignore_shape=True, labels=(labels * len(model.adjacency_matrices_)))
+        dot = GraphUtils.to_pydot(causal_graph.G)
+        dot.write(path=output_path)
         
-        # Write the Graphviz source directly to a .dot file
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(dot.source)
     except Exception as e:
-        print(f"[{time.strftime('%H:%M:%S')}] WARNING: make_dot with adjacency_matrices_ failed ({e}). Trying with instantaneous effects only (lag 0).")
-        try:
-            # Fallback to contemporaneous effects if the list is not supported
-            dot = make_dot(model.adjacency_matrices_[0], labels=labels)
-            with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(dot.source)
-        except Exception as e_inner:
-            print(f"[{time.strftime('%H:%M:%S')}] ERROR: Failed to save .dot file to {output_path}. Reason: {e_inner}")
+        print(f"[{time.strftime('%H:%M:%S')}] WARNING: make_dot failed ({e}).")
 
 
 def impute_and_encode_features(df: pd.DataFrame) -> pd.DataFrame:
@@ -103,7 +99,7 @@ def impute_and_encode_features(df: pd.DataFrame) -> pd.DataFrame:
     imputed_array = preprocessor.fit_transform(df)
     feature_names = preprocessor.get_feature_names_out()
     df_imputed = pd.DataFrame(
-        imputed_array, columns=feature_names, index=df.index
+        imputed_array, columns=feature_names
     )
 
     if categorical_cols:
@@ -137,6 +133,7 @@ def generate_tiered_forbidden_edges(
     """
     forbidden_edges: Set[Tuple[str, str]] = set()
     forbid_within_tier = forbid_within_tier or []
+    protected_tiers = protected_tiers or []
 
     num_tiers = len(tiers)
 
@@ -159,12 +156,12 @@ def generate_tiered_forbidden_edges(
                         forbidden_edges.add((src, dst))
 
     # 3. Optional: Protected tiers cannot be caused at all
-        for tier_idx in protected_tiers:
-            for i in range(tier_idx):
-                earlier_vars = tiers[i]
-                for source in earlier_vars:
-                    for target in tier_idx:
-                        forbidden_edges.add((source, target))
+    for tier_idx in protected_tiers:
+        for i in range(tier_idx):
+            earlier_vars = tiers[i]
+            for source in earlier_vars:
+                for target in tiers[tier_idx]:
+                    forbidden_edges.add((source, target))
 
     return forbidden_edges
 
@@ -179,8 +176,6 @@ def export_to_causallearn_bk(
     BackgroundKnowledge object.
     """
     try:
-        from causallearn.graph.GraphNode import GraphNode
-        from causallearn.utils.PCUtils.BackgroundKnowledge import BackgroundKnowledge
 
         nodes: Dict[str, GraphNode] = {var: GraphNode(var) for var in all_vars}
         bk = BackgroundKnowledge()
@@ -198,9 +193,9 @@ def export_to_causallearn_bk(
         return None, None
 
 
-def generate_background_knowledge(df, causal_tiers, required_edges=None):
+def generate_background_knowledge(df, causal_orders, internally_forbidden_tiers = None, protected_tiers = None, required_edges=None):
     # Generate forbidden edges
-    forbidden = generate_tiered_forbidden_edges(causal_tiers)
+    forbidden = generate_tiered_forbidden_edges(causal_orders, internally_forbidden_tiers, protected_tiers)
 
     # Flatten variable list to inspect coverage
     all_vars = df.columns
@@ -209,7 +204,7 @@ def generate_background_knowledge(df, causal_tiers, required_edges=None):
 
 
 def perform_causal_discovery(
-    df: pd.DataFrame, df_name: str
+    df: pd.DataFrame, df_name: str, background_knowledge: Optional[BackgroundKnowledge] = None
 ) -> Tuple[Optional[object], float]:
     """Runs PC causal discovery and returns the fitted model and elapsed time."""
     print(
@@ -218,7 +213,9 @@ def perform_causal_discovery(
     start_time = time.time()
 
     try:
-        causal_graph = pc(df)
+        df_numpy = df.to_numpy().astype(float)
+
+        causal_graph = pc(data=df_numpy, background_knowledge=background_knowledge)
         elapsed_time = time.time() - start_time
         print(
             f"[{time.strftime('%H:%M:%S')}] INFO: Causal discovery completed in {elapsed_time:.2f} seconds."
@@ -226,25 +223,12 @@ def perform_causal_discovery(
         return causal_graph, elapsed_time
     except Exception as e:
         print(
-            f"[{time.strftime('%H:%M:%S')}] ERROR: VARLiNGAM fitting failed for {df_name}. Reason: {e}"
+            f"[{time.strftime('%H:%M:%S')}] ERROR: PC fitting failed for {df_name}. Reason: {e}"
         )
         return None, 0.0
 
 
-def export_causal_graph(
-    model: object, labels: list[str], df_name: str
-) -> None:
-    """Exports the discovered model to a Graphviz .dot file."""
-    base_name = os.path.splitext(os.path.basename(df_name))[0]
-    output_dot_path = f"{base_name}_causal_graph.dot"
-
-    print(
-        f"[{time.strftime('%H:%M:%S')}] INFO: Saving causal graph to '{output_dot_path}'..."
-    )
-    save_causal_graph(model, labels, output_dot_path)
-
-
-def process_single_dataset(df: pd.DataFrame, df_name: str) -> None:
+def process_single_dataset(df: pd.DataFrame, df_name: str, background_knowledge: Optional[BackgroundKnowledge] = None) -> None:
     """Orchestrates dataset preprocessing, causal discovery, and artifact saving."""
     print(
         f"[{time.strftime('%H:%M:%S')}] INFO: --- Starting processing for dataset '{df_name}' ---"
@@ -263,15 +247,16 @@ def process_single_dataset(df: pd.DataFrame, df_name: str) -> None:
             f"[{time.strftime('%H:%M:%S')}] WARNING: Dataset '{df_name}' has insufficient numeric data after preprocessing. Skipping."
         )
         return
+    
 
     # 2. Causal Discovery
-    model, _ = perform_causal_discovery(df_processed, df_name)
+    model, _ = perform_causal_discovery(df_processed, df_name, background_knowledge=background_knowledge)
     if model is None:
         return
 
     # 3. Export
     labels = df.columns.tolist()
-    output_dot_path = f"{df_name}_causal_graph.dot"
+    output_dot_path = f"causal_graphs/static_{df_name}_causal_graph.dot"
     save_causal_graph(model, labels, output_dot_path)
 
     print(
@@ -285,37 +270,42 @@ def run_pipeline(datasets):
     Args:
         datasets: A list of pairs, where the first element is the dataset and the second is its name.
     """
-    if not datasets:
-        print("No datasets provided to the pipeline.")
-        return
 
     print("==================================================")
     print(f"Starting Causal Discovery Pipeline for {len(datasets)} dataset(s).")
     print("==================================================\n")
     
-    for df, df_name in datasets:
-        if df is not None:
-            process_single_dataset(df, df_name)
+    for index, row in datasets.iterrows():
+        if pd.notna(row['file_path']):
+            df = pd.read_csv(row['file_path'])
+            background_knowledge = generate_background_knowledge(df, 
+                                                                 row['causal_orders'], 
+                                                                 row['internally_forbidden_tiers'], 
+                                                                 row['protected_tiers'],
+                                                                 row['required_edges']
+                                                                )
+            process_single_dataset(df, f"trial{index}")
 
     print("==================================================")
     print("Pipeline execution completed.")
     print("==================================================")
 
 if __name__ == "__main__":
-    
 
-    datasets = [
-            "cleaned_data/trial2.csv",
-            "cleaned_data/trial6.csv",
-            "cleaned_data/trial13.csv",
-            "cleaned_data/trial29.csv",
-            "cleaned_data/trial37.csv",
-            "cleaned_data/trial108.csv",
-            "cleaned_data/trial116.csv",
-            "cleaned_data/trial120.csv",
-        ]
+    dataset_paths = {
+            2:   "cleaned_data/trial2.csv",
+            6:   "cleaned_data/trial6.csv",
+            13:  "cleaned_data/trial13.csv",
+            29:  "cleaned_data/trial29.csv",
+            37:  "cleaned_data/trial37.csv",
+            108: "cleaned_data/trial108.csv",
+            116: "cleaned_data/trial116.csv",
+            120: "cleaned_data/trial120.csv",
+    }
 
-    if datasets:
-        run_pipeline(datasets)
-    else:
-        print("Please provide a list of datasets in the 'datasets' list to run the pipeline.")
+    datasets = causal_orderings.df_background_knowledge.copy()
+
+    datasets = datasets.drop(29)
+    datasets['file_path'] = dataset_paths
+
+    run_pipeline(datasets)

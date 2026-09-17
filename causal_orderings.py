@@ -1,8 +1,11 @@
+import pandas as pd
+
 # The lists
 
-causal_orders = []
-internally_forbidden_tiers = [] # Tiers whose variables cannot cause each other
-protected_tiers = [] # Tiers whose variables cannot be caused, even by those that precede them in the causal order
+causal_orders = {} # The causal tiers themselves (variables in tier N cannot be caused by variables in later tiers)
+internally_forbidden_tiers = {} # Tiers whose variables cannot cause each other
+protected_tiers = {} # Tiers whose variables cannot be caused, even by those that precede them in the causal order
+required_edges = {}
 
 
 # Trial 2
@@ -37,6 +40,7 @@ causal_orders[2] = [
 
 internally_forbidden_tiers[2] = [0]
 protected_tiers[2] = [2]
+required_edges[2] = []
 
 
 
@@ -116,6 +120,7 @@ causal_orders[6] = [
 
 internally_forbidden_tiers[6] = [0]
 protected_tiers[6] = [2]
+required_edges[6] = []
 
 
 
@@ -173,6 +178,7 @@ causal_orders[13] = [
 
 internally_forbidden_tiers[13] = [0]
 protected_tiers[13] = [2]
+required_edges[13] = []
 
 
 
@@ -235,6 +241,7 @@ causal_orders[29] = [
 
 internally_forbidden_tiers[29] = [0]
 protected_tiers[29] = [2]
+required_edges[29] = []
 
 
 
@@ -287,6 +294,7 @@ causal_orders[37] = [
 
 internally_forbidden_tiers[37] = [0]
 protected_tiers[37] = [2]
+required_edges[37] = []
 
 
 
@@ -323,6 +331,7 @@ causal_orders[108] = [
 
 internally_forbidden_tiers[108] = [0]
 protected_tiers[108] = [2]
+required_edges[108] = []
 
 
 
@@ -373,6 +382,7 @@ causal_orders[116] = [
 
 internally_forbidden_tiers[116] = [0]
 protected_tiers[116] = [2]
+required_edges[116] = []
 
 
 
@@ -402,3 +412,14 @@ causal_orders[120] = [
 
 internally_forbidden_tiers[120] = [0]
 protected_tiers[120] = [2]
+required_edges[120] = []
+
+
+
+# Uniting all dictionaries into a dataframe
+
+df_background_knowledge = pd.DataFrame()
+df_background_knowledge['causal_orders'] = causal_orders
+df_background_knowledge['internally_forbidden_tiers'] = internally_forbidden_tiers
+df_background_knowledge['protected_tiers'] = protected_tiers
+df_background_knowledge['required_edges'] = required_edges
