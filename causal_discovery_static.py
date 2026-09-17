@@ -4,10 +4,11 @@ import pandas as pd
 import lingam
 import numpy as np
 from lingam.utils import make_dot
-from typing import List, Optional, Tuple
+from typing import Dict, List, Optional, Set, Tuple
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from causallearn.search.ConstraintBased.PC import pc
+import itertools
 
 def load_dataset(file_path: str) -> Optional[pd.DataFrame]:
     """
@@ -37,21 +38,6 @@ def row_to_timeseries(df: pd.Series) -> pd.DataFrame:
     Returns:
         pd.DataFrame: A DataFrame with one column representing the time series.
     """
-    
-
-def perform_causal_discovery(df: pd.DataFrame) -> lingam.VARLiNGAM:
-    """
-    Performs causal discovery using VARLiNGAM on the provided DataFrame.
-    
-    Args:
-        df (pd.DataFrame): The input time series dataset.
-        
-    Returns:
-        lingam.VARLiNGAM: The fitted VARLiNGAM model.
-    """
-    model = lingam.VARLiNGAM()
-    model.fit(df)
-    return model
 
 def save_causal_graph(model: lingam.VARLiNGAM, labels: List[str], output_path: str):
     """
@@ -79,6 +65,7 @@ def save_causal_graph(model: lingam.VARLiNGAM, labels: List[str], output_path: s
                 f.write(dot.source)
         except Exception as e_inner:
             print(f"[{time.strftime('%H:%M:%S')}] ERROR: Failed to save .dot file to {output_path}. Reason: {e_inner}")
+
 
 def impute_and_encode_features(df: pd.DataFrame) -> pd.DataFrame:
     """Imputes missing values (median for numeric, mode for categorical)
@@ -127,22 +114,116 @@ def impute_and_encode_features(df: pd.DataFrame) -> pd.DataFrame:
     return df_imputed.apply(pd.to_numeric)
 
 
-def fit_varlingam(
+def generate_tiered_forbidden_edges(
+    tiers: List[List[str]],
+    forbid_within_tier: Optional[List[int]] = None,
+    protected_tiers: Optional[List[int]] = None,
+) -> Set[Tuple[str, str]]:
+    """Generates forbidden edges based on a partial causal ordering.
+
+    Rules:
+      1. A variable in Tier j cannot cause a variable in Tier i if j > i (no backward causation).
+      2. Optional: forbid edges between variables within specific tiers (e.g. randomized treatments).
+      3. Optional: no variable can cause a variable that belongs to a protected tier.
+
+    Args:
+        tiers: The partial causal order.
+        forbid_within_tier: Optional list of tier indices where causation within the
+                            tier itself is also forbidden (e.g., [1] if Tier 1 is randomized).
+        protected_tiers: Optional list of tier indices whose variables cannot be caused at all.
+
+    Returns:
+        Set of tuples (source, target) indicating that source -/-> target is forbidden.
+    """
+    forbidden_edges: Set[Tuple[str, str]] = set()
+    forbid_within_tier = forbid_within_tier or []
+
+    num_tiers = len(tiers)
+
+    # 1. Temporal rule: No backward causation (Tier j -/-> Tier i for all j > i)
+    for j in range(num_tiers):
+        for i in range(j):
+            later_vars = tiers[j]
+            earlier_vars = tiers[i]
+            for source in later_vars:
+                for target in earlier_vars:
+                    forbidden_edges.add((source, target))
+
+    # 2. Optional: Forbid internal causation within selected tiers
+    for tier_idx in forbid_within_tier:
+        if 0 <= tier_idx < num_tiers:
+            vars_in_tier = tiers[tier_idx]
+            for src in vars_in_tier:
+                for dst in vars_in_tier:
+                    if src != dst:
+                        forbidden_edges.add((src, dst))
+
+    # 3. Optional: Protected tiers cannot be caused at all
+        for tier_idx in protected_tiers:
+            for i in range(tier_idx):
+                earlier_vars = tiers[i]
+                for source in earlier_vars:
+                    for target in tier_idx:
+                        forbidden_edges.add((source, target))
+
+    return forbidden_edges
+
+
+def export_to_causallearn_bk(
+    all_vars: List[str],
+    forbidden: Set[Tuple[str, str]],
+    required: Optional[Set[Tuple[str, str]]] = None,
+):
+    """Integrates forbidden (and optional required) constraints into causal-learn's
+
+    BackgroundKnowledge object.
+    """
+    try:
+        from causallearn.graph.GraphNode import GraphNode
+        from causallearn.utils.PCUtils.BackgroundKnowledge import BackgroundKnowledge
+
+        nodes: Dict[str, GraphNode] = {var: GraphNode(var) for var in all_vars}
+        bk = BackgroundKnowledge()
+
+        for src, dst in forbidden:
+            bk.add_forbidden_by_node(nodes[src], nodes[dst])
+
+        if required:
+            for src, dst in required:
+                bk.add_required_by_node(nodes[src], nodes[dst])
+
+        return bk, nodes
+    except ImportError:
+        print("causal-learn is not installed in the local environment.")
+        return None, None
+
+
+def generate_background_knowledge(df, causal_tiers, required_edges=None):
+    # Generate forbidden edges
+    forbidden = generate_tiered_forbidden_edges(causal_tiers)
+
+    # Flatten variable list to inspect coverage
+    all_vars = df.columns
+
+    return export_to_causallearn_bk(all_vars, forbidden, required_edges)
+
+
+def perform_causal_discovery(
     df: pd.DataFrame, df_name: str
 ) -> Tuple[Optional[object], float]:
-    """Runs VARLiNGAM causal discovery and returns the fitted model and elapsed time."""
+    """Runs PC causal discovery and returns the fitted model and elapsed time."""
     print(
-        f"[{time.strftime('%H:%M:%S')}] INFO: Running VARLiNGAM causal discovery..."
+        f"[{time.strftime('%H:%M:%S')}] INFO: Running PC causal discovery..."
     )
     start_time = time.time()
 
     try:
-        model = perform_causal_discovery(df)
+        causal_graph = pc(df)
         elapsed_time = time.time() - start_time
         print(
             f"[{time.strftime('%H:%M:%S')}] INFO: Causal discovery completed in {elapsed_time:.2f} seconds."
         )
-        return model, elapsed_time
+        return causal_graph, elapsed_time
     except Exception as e:
         print(
             f"[{time.strftime('%H:%M:%S')}] ERROR: VARLiNGAM fitting failed for {df_name}. Reason: {e}"
@@ -184,7 +265,7 @@ def process_single_dataset(df: pd.DataFrame, df_name: str) -> None:
         return
 
     # 2. Causal Discovery
-    model, _ = fit_varlingam(df_processed, df_name)
+    model, _ = perform_causal_discovery(df_processed, df_name)
     if model is None:
         return
 
@@ -221,58 +302,18 @@ def run_pipeline(datasets):
     print("==================================================")
 
 if __name__ == "__main__":
-    # Example usage:
-    # Provide the list of your dataset file paths below
-    datasets = []
+    
 
-    df_6 = load_dataset("cleaned_data/trial6.csv")
-    df_6 = df_6.drop(columns=['YS_delta_cystatin_c_24m', 
-                              'YS_delta_1_5ag_24m', 
-                              'YS_delta_1_5ag_12m'
-                              ])
-    datasets.append((df_6, "trial6.csv"))
-
-    df_29 = load_dataset("cleaned_data/trial29.csv")
-    df_29 = df_29.drop(columns=['X_csf_qcc_0w'])
-    datasets.append((df_29, "trial29.csv"))
-
-    df_37 = load_dataset("cleaned_data/trial37.csv")
-    df_37 = df_37.drop(columns=['X_pdstent_0d',
-                                'X_sodsom_0d',
-                                'X_bsphinc_0d',
-                                'X_chole_0d'
-                                ])
-    datasets.append((df_37, "trial37.csv"))
-
-    df_116 = load_dataset("cleaned_data/trial116.csv")
-    df_116 = df_116.drop(columns=['X_source_id', 
-                                  'YP_dass_total_t2', 
-                                  'YP_delta_dass_total_t2', 
-                                  'YP_delta_factg_total_t2', 
-                                  'YS_dass_stress_t2', 
-                                  'YS_dass_anxiety_t2', 
-                                  'YS_dass_depression_t2', 
-                                  'X_dass_total_0m', 
-                                  'X_age_years', 
-                                  'X_residence_place_code', 
-                                  'X_marital_status_code', 
-                                  'X_income_code', 
-                                  'X_treatment_type_code',
-                                  'X_cancer_diagnosis_code'
-                                  ])
-    datasets.append((df_116, "trial116.csv"))
-    print(f"colunas em 116: {len(df_116.columns)}")
-
-    dfs_to_load = [
+    datasets = [
+            "cleaned_data/trial2.csv",
+            "cleaned_data/trial6.csv",
             "cleaned_data/trial13.csv",
+            "cleaned_data/trial29.csv",
+            "cleaned_data/trial37.csv",
             "cleaned_data/trial108.csv",
+            "cleaned_data/trial116.csv",
             "cleaned_data/trial120.csv",
         ]
-
-    for path in dfs_to_load:
-        df = load_dataset(path)
-        if df is not None:
-            datasets.append((df, os.path.basename(path)))
 
     if datasets:
         run_pipeline(datasets)
