@@ -3,6 +3,7 @@ import time
 import pandas as pd
 import lingam
 import numpy as np
+import pydot
 import causal_orderings
 from lingam.utils import make_dot
 from typing import Dict, List, Optional, Set, Tuple
@@ -10,8 +11,8 @@ from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from causallearn.search.ConstraintBased.PC import pc
 from causallearn.graph.GraphNode import GraphNode
+from causallearn.graph.Endpoint import Endpoint
 from causallearn.utils.PCUtils.BackgroundKnowledge import BackgroundKnowledge
-from causallearn.utils.GraphUtils import GraphUtils
 
 import itertools
 
@@ -48,17 +49,49 @@ def row_to_timeseries(row: pd.Series):
 
 def save_causal_graph(causal_graph, labels: List[str], output_path: str):
     """
-    Saves the causal graph as a .dot file.
-    
+    Saves the causal graph as a .dot file, naming each node after its
+    corresponding dataset column instead of a positional index.
+
     Args:
         causal_graph: The causal graph.
-        labels (List[str]): List of variable names.
+        labels (List[str]): List of variable names (dataset column names).
         output_path (str): The file path where the .dot file will be saved.
     """
     try:
-        dot = GraphUtils.to_pydot(causal_graph.G, labels=labels)
+        nodes = causal_graph.G.get_nodes()
+        assert len(labels) == len(nodes)
+
+        dot = pydot.Dot(graph_type="digraph", fontsize=18)
+        dot.obj_dict["attributes"]["dpi"] = 200
+
+        for label in labels:
+            dot.add_node(pydot.Node(label))
+
+        def get_arrow_type(endpoint):
+            if endpoint == Endpoint.TAIL:
+                return "none"
+            elif endpoint == Endpoint.ARROW:
+                return "normal"
+            elif endpoint == Endpoint.CIRCLE:
+                return "odot"
+            else:
+                raise NotImplementedError()
+
+        for edge in causal_graph.G.get_graph_edges():
+            node1_label = labels[nodes.index(edge.get_node1())]
+            node2_label = labels[nodes.index(edge.get_node2())]
+            dot.add_edge(
+                pydot.Edge(
+                    node1_label,
+                    node2_label,
+                    dir="both",
+                    arrowtail=get_arrow_type(edge.get_endpoint1()),
+                    arrowhead=get_arrow_type(edge.get_endpoint2()),
+                )
+            )
+
         dot.write(path=output_path)
-        
+
     except Exception as e:
         print(f"[{time.strftime('%H:%M:%S')}] WARNING: to_pydot failed ({e}).")
 
